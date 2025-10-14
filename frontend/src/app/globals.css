@@ -3,6 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Design system colors */
+  --green-treeline: #478559;
+  --purple-baseline: #161748;
+  --pink-highlight: #f95d9b;
+  --bluewater-lowlight: #39a0ca;
+  --black: #000000;
+  --grey: #D3D3D3;
+  --white: #FFFFFF;
 }
 
 @theme inline {
@@ -10,6 +19,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-lora: var(--font-lora);
+  
+  /* Custom color definitions */
+  --color-green-treeline: var(--green-treeline);
+  --color-purple-baseline: var(--purple-baseline);
+  --color-pink-highlight: var(--pink-highlight);
+  --color-bluewater-lowlight: var(--bluewater-lowlight);
+  --color-grey: var(--grey);
 }
 
 @media (prefers-color-scheme: dark) {

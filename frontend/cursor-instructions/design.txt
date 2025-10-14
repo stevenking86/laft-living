@@ -1,0 +1,10 @@
+Use the following colors for our color scheme for our website.  White text looks good on top of the
+purple baseline.  So does the gray. 
+
+Green Treeline: #478559
+Purple baseline: #161748
+Pink highlight: #f95d9b
+Bluewater lowlight: #39a0ca
+Black: #000000
+Grey: #D3D3D3
+White: #FFFFFF

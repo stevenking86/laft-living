@@ -1,0 +1,29 @@
+{
+  "name": "laft-fullstack",
+  "version": "1.0.0",
+  "description": "Rails API + Next.js Full-Stack Application",
+  "scripts": {
+    "dev": "./start-dev.sh",
+    "backend": "cd backend && rails server -p 3001",
+    "frontend": "cd frontend && npm run dev",
+    "setup": "npm run setup:backend && npm run setup:frontend",
+    "setup:backend": "cd backend && bundle install && rails db:create && rails db:migrate && rails db:seed",
+    "setup:frontend": "cd frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd backend && bundle exec rspec",
+    "test:frontend": "cd frontend && npm run test"
+  },
+  "keywords": [
+    "rails",
+    "nextjs",
+    "typescript",
+    "api",
+    "fullstack"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

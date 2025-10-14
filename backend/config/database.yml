@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: laft_development
+
+test:
+  <<: *default
+  database: laft_test
+
+production:
+  <<: *default
+  database: laft_production
+  username: laft
+  password: <%= ENV["LAFT_DATABASE_PASSWORD"] %>

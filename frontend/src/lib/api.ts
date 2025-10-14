@@ -10,15 +10,6 @@ export interface User {
   updated_at: string;
 }
 
-export interface Post {
-  id: number;
-  title: string;
-  content: string;
-  user_id: number;
-  user?: User;
-  created_at: string;
-  updated_at: string;
-}
 
 class ApiService {
   private baseUrl: string;
@@ -75,34 +66,6 @@ class ApiService {
     });
   }
 
-  // Post endpoints
-  async getPosts(): Promise<Post[]> {
-    return this.request<Post[]>('/api/v1/posts');
-  }
-
-  async getPost(id: number): Promise<Post> {
-    return this.request<Post>(`/api/v1/posts/${id}`);
-  }
-
-  async createPost(post: Omit<Post, 'id' | 'created_at' | 'updated_at'>): Promise<Post> {
-    return this.request<Post>('/api/v1/posts', {
-      method: 'POST',
-      body: JSON.stringify({ post }),
-    });
-  }
-
-  async updatePost(id: number, post: Partial<Post>): Promise<Post> {
-    return this.request<Post>(`/api/v1/posts/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify({ post }),
-    });
-  }
-
-  async deletePost(id: number): Promise<void> {
-    return this.request<void>(`/api/v1/posts/${id}`, {
-      method: 'DELETE',
-    });
-  }
 }
 
 export const apiService = new ApiService(API_BASE_URL);

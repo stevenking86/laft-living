@@ -1,11 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { apiService, User, Post } from '@/lib/api';
+import { apiService, User } from '@/lib/api';
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
-  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -13,12 +12,8 @@ export default function Home() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const [usersData, postsData] = await Promise.all([
-          apiService.getUsers(),
-          apiService.getPosts(),
-        ]);
+        const usersData = await apiService.getUsers();
         setUsers(usersData);
-        setPosts(postsData);
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
@@ -55,7 +50,7 @@ export default function Home() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="max-w-4xl mx-auto">
           {/* Users Section */}
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Users</h2>
@@ -67,28 +62,6 @@ export default function Home() {
                   <div key={user.id} className="border-b pb-3 last:border-b-0">
                     <h3 className="font-medium text-gray-900">{user.name}</h3>
                     <p className="text-sm text-gray-600">{user.email}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Posts Section */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Posts</h2>
-            {posts.length === 0 ? (
-              <p className="text-gray-500">No posts found</p>
-            ) : (
-              <div className="space-y-4">
-                {posts.map((post) => (
-                  <div key={post.id} className="border-b pb-4 last:border-b-0">
-                    <h3 className="font-medium text-gray-900">{post.title}</h3>
-                    <p className="text-sm text-gray-600 mt-1">{post.content}</p>
-                    {post.user && (
-                      <p className="text-xs text-gray-500 mt-2">
-                        By: {post.user.name}
-                      </p>
-                    )}
                   </div>
                 ))}
               </div>

@@ -98,12 +98,6 @@ The Rails API provides the following endpoints:
 - `PUT /api/v1/users/:id` - Update a user
 - `DELETE /api/v1/users/:id` - Delete a user
 
-### Posts
-- `GET /api/v1/posts` - List all posts
-- `GET /api/v1/posts/:id` - Get a specific post
-- `POST /api/v1/posts` - Create a new post
-- `PUT /api/v1/posts/:id` - Update a post
-- `DELETE /api/v1/posts/:id` - Delete a post
 
 ## Development
 

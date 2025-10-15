@@ -268,3 +268,295 @@ Processing by Rails::WelcomeController#index as */*
 Completed 200 OK in 12ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
 
 
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3408675332363174475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddPasswordDigestToUsers (20251015135948)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "users" ADD "password_digest" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251015135948') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3408675332363174475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started POST "/api/v1/users" for ::1 at 2025-10-15 15:00:38 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:2:in '<class:User>'
+app/models/user.rb:1:in '<top (required)>'
+Started POST "/api/v1/users" for ::1 at 2025-10-15 15:00:46 +0100
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:2:in '<class:User>'
+app/models/user.rb:1:in '<top (required)>'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ test_auth.rb:18:in '<main>'
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@example.com"], ["LIMIT", 1]]
+  ↳ test_auth.rb:18:in '<main>'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Test User"], ["email", "test@example.com"], ["created_at", "2025-10-15 14:13:29.743984"], ["updated_at", "2025-10-15 14:13:29.743984"], ["password_digest", "$2a$12$qlxXzY2y6Eb4WL09AwTAc.yTIfXMw/ekxtZrvSvXHb42b9AjMnbrO"]]
+  ↳ test_auth.rb:18:in '<main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ test_auth.rb:18:in '<main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ test_auth.rb:52:in '<main>'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "short@example.com"], ["LIMIT", 1]]
+  ↳ test_auth.rb:52:in '<main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ test_auth.rb:52:in '<main>'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:27:37 +0100
+Processing by Api::V1::UsersController#index as */*
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:2:in '<class:User>'
+app/models/user.rb:1:in '<top (required)>'
+app/controllers/api/v1/users_controller.rb:6:in 'Api::V1::UsersController#index'
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:27:45 +0100
+Processing by Api::V1::UsersController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:2:in '<class:User>'
+app/models/user.rb:1:in '<top (required)>'
+app/controllers/api/v1/users_controller.rb:6:in 'Api::V1::UsersController#index'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:27:56 +0100
+Processing by Api::V1::UsersController#index as */*
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:2:in '<class:User>'
+app/models/user.rb:1:in '<top (required)>'
+app/controllers/api/v1/users_controller.rb:6:in 'Api::V1::UsersController#index'
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:28:09 +0100
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (14.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 33ms (Views: -1.3ms | ActiveRecord: 29.1ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/api/v1/users" for ::1 at 2025-10-15 15:28:12 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user" => {"name" => "Test User 2", "email" => "test2@example.com", "password" => "password123", "password_confirmation" => "password123"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'password' for User.)
+Caused by: NoMethodError (undefined method 'password=' for an instance of User)
+
+Information for: ActiveModel::UnknownAttributeError (unknown attribute 'password' for User.):
+  
+app/controllers/api/v1/users_controller.rb:17:in 'Api::V1::UsersController#create'
+
+Information for cause: NoMethodError (undefined method 'password=' for an instance of User):
+  
+app/controllers/api/v1/users_controller.rb:17:in 'Api::V1::UsersController#create'
+Started POST "/api/v1/users" for ::1 at 2025-10-15 15:28:18 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user" => {"name" => "Test User 2", "email" => "test2@example.com"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Test User 2"], ["email", "test2@example.com"], ["created_at", "2025-10-15 14:28:18.162551"], ["updated_at", "2025-10-15 14:28:18.162551"], ["password_digest", nil]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 13.4ms (2 queries, 0 cached) | GC: 0.1ms)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/api/v1/users_controller.rb:21:in 'Api::V1::UsersController#create'
+Started POST "/api/v1/users" for ::1 at 2025-10-15 15:28:26 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user" => {"name" => "Test User 2", "email" => "test2@example.com"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+Completed 422 Unprocessable Content in 19ms (Views: 1.6ms | ActiveRecord: 8.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users" for ::1 at 2025-10-15 15:28:28 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user" => {"name" => "New User", "email" => "newuser@example.com"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "newuser@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "New User"], ["email", "newuser@example.com"], ["created_at", "2025-10-15 14:28:28.895728"], ["updated_at", "2025-10-15 14:28:28.895728"], ["password_digest", nil]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+Completed 201 Created in 4ms (Views: 0.1ms | ActiveRecord: 2.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:30:31 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (24.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 54ms (Views: -0.3ms | ActiveRecord: 40.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:30:37 +0100
+Processing by Api::V1::UsersController#index as */*
+  Parameters: {"user" => {}}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 2.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:31:38 +0100
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 1.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:31:59 +0100
+Processing by Api::V1::UsersController#index as */*
+  Parameters: {"user" => {}}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 1.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:34:13 +0100
+Processing by Api::V1::UsersController#index as */*
+  Parameters: {"user" => {}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:34:28 +0100
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:34:45 +0100
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:34:59 +0100
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:35:09 +0100
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 10ms (Views: 3.5ms | ActiveRecord: 5.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started GET "/api/v1/users" for ::1 at 2025-10-15 15:37:17 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (12.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7:in 'Api::V1::UsersController#index'
+Completed 200 OK in 34ms (Views: -0.4ms | ActiveRecord: 26.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/me" for 127.0.0.1 at 2025-10-15 15:37:55 +0100
+Processing by Api::V1::AuthController#me as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:45:in 'Api::V1::AuthController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 12ms (Views: 0.1ms | ActiveRecord: 5.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2025-10-15 15:38:22 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user" => {"name" => "Steven GK", "email" => "stevenking86@gmail.com", "password" => "Password123!", "password_confirmation" => "Password123!"}}
+[31mUnpermitted parameters: :password, :password_confirmation. Context: { controller: Api::V1::UsersController, action: create, request: #<ActionDispatch::Request:0x000000012ee77780>, params: {"user" => {"name" => "Steven GK", "email" => "stevenking86@gmail.com", "password" => "Password123!", "password_confirmation" => "Password123!"}, "controller" => "api/v1/users", "action" => "create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Steven GK"], ["email", "stevenking86@gmail.com"], ["created_at", "2025-10-15 14:38:22.201839"], ["updated_at", "2025-10-15 14:38:22.201839"], ["password_digest", nil]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+Completed 201 Created in 29ms (Views: 0.2ms | ActiveRecord: 13.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/auth/logout" for 127.0.0.1 at 2025-10-15 15:38:27 +0100
+Processing by Api::V1::AuthController#logout as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:45:in 'Api::V1::AuthController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2025-10-15 15:38:38 +0100
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "stevenking86@gmail.com", "password" => "password", "auth" => {"email" => "stevenking86@gmail.com", "password" => "password"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+

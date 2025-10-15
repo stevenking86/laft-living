@@ -31,7 +31,8 @@ class ApiService {
     const response = await fetch(url, config);
     
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
     }
 
     return response.json();
@@ -63,6 +64,38 @@ class ApiService {
   async deleteUser(id: number): Promise<void> {
     return this.request<void>(`/api/v1/users/${id}`, {
       method: 'DELETE',
+    });
+  }
+
+  // Authentication endpoints
+  async login(email: string, password: string): Promise<{ user: User; message: string }> {
+    return this.request<{ user: User; message: string }>('/api/v1/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
+  }
+
+  async logout(): Promise<{ message: string }> {
+    return this.request<{ message: string }>('/api/v1/auth/logout', {
+      method: 'POST',
+    });
+  }
+
+  async getCurrentUser(): Promise<User> {
+    return this.request<User>('/api/v1/auth/me');
+  }
+
+  async signup(name: string, email: string, password: string, passwordConfirmation: string): Promise<{ user: User; message: string }> {
+    return this.request<{ user: User; message: string }>('/api/v1/users', {
+      method: 'POST',
+      body: JSON.stringify({ 
+        user: { 
+          name, 
+          email, 
+          password, 
+          password_confirmation: passwordConfirmation 
+        } 
+      }),
     });
   }
 

@@ -17,7 +17,15 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created
+      # Temporarily skip session assignment due to session store issues
+      render json: {
+        message: 'User created successfully',
+        user: {
+          id: @user.id,
+          name: @user.name,
+          email: @user.email
+        }
+      }, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end

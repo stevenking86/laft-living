@@ -23,5 +23,12 @@ module Backend
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    
+    # Enable sessions for authentication
+    config.session_store :cookie_store, key: '_laft_session'
+    
+    # Add session middleware for API authentication
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_laft_session'
   end
 end

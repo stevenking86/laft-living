@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rental_application: one
+  property: one
+  unit: one
+  signed: false
+  signed_date: 2025-10-15
+  move_in_date: 2025-10-15
+  move_out_date: 2025-10-15
+
+two:
+  rental_application: two
+  property: two
+  unit: two
+  signed: false
+  signed_date: 2025-10-15
+  move_in_date: 2025-10-15
+  move_out_date: 2025-10-15

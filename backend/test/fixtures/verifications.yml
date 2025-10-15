@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rental_application: one
+  user: one
+  is_verified: false
+
+two:
+  rental_application: two
+  user: two
+  is_verified: false

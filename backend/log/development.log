@@ -560,3 +560,310 @@ Processing by Api::V1::AuthController#login as */*
 Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
 
 
+Started POST "/api/v1/auth/logout" for 127.0.0.1 at 2025-10-15 16:45:06 +0100
+Processing by Api::V1::AuthController#logout as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:45:in 'Api::V1::AuthController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 20ms (Views: 0.1ms | ActiveRecord: 9.1ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3408675332363174475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateProperties (20251015185703)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.4ms)[0m  [1m[35mCREATE TABLE "properties" ("id" bigserial primary key, "name" character varying NOT NULL, "address" text NOT NULL, "office_hours" text, "pets_allowed" boolean DEFAULT FALSE NOT NULL, "has_parking" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251015185703') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUnits (20251015185716)
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "units" ("id" bigserial primary key, "property_id" bigint NOT NULL, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d7df365ccb"
+FOREIGN KEY ("property_id")
+  REFERENCES "properties" ("id")
+)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE INDEX "index_units_on_property_id" ON "units" ("property_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251015185716') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRentalApplications (20251015185728)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "rental_applications" ("id" bigserial primary key, "user_id" bigint NOT NULL, "property_id" bigint NOT NULL, "unit_id" bigint NOT NULL, "move_in_date" date NOT NULL, "term" integer NOT NULL, "status" integer DEFAULT 0 NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e257d0e090"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_3875d631ab"
+FOREIGN KEY ("property_id")
+  REFERENCES "properties" ("id")
+, CONSTRAINT "fk_rails_8e7d957e39"
+FOREIGN KEY ("unit_id")
+  REFERENCES "units" ("id")
+)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE INDEX "index_rental_applications_on_user_id" ON "rental_applications" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_rental_applications_on_property_id" ON "rental_applications" ("property_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE INDEX "index_rental_applications_on_unit_id" ON "rental_applications" ("unit_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_rental_applications_on_status" ON "rental_applications" ("status")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251015185728') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateVerifications (20251015185751)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "verifications" ("id" bigserial primary key, "rental_application_id" bigint NOT NULL, "user_id" bigint NOT NULL, "is_verified" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_23e64a9325"
+FOREIGN KEY ("rental_application_id")
+  REFERENCES "rental_applications" ("id")
+, CONSTRAINT "fk_rails_f184078eb4"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE INDEX "index_verifications_on_rental_application_id" ON "verifications" ("rental_application_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE INDEX "index_verifications_on_user_id" ON "verifications" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251015185751') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLeases (20251015185806)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "leases" ("id" bigserial primary key, "rental_application_id" bigint NOT NULL, "property_id" bigint NOT NULL, "unit_id" bigint NOT NULL, "signed" boolean DEFAULT FALSE NOT NULL, "signed_date" date, "move_in_date" date NOT NULL, "move_out_date" date, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_5e2c35a820"
+FOREIGN KEY ("rental_application_id")
+  REFERENCES "rental_applications" ("id")
+, CONSTRAINT "fk_rails_170c7116c8"
+FOREIGN KEY ("property_id")
+  REFERENCES "properties" ("id")
+, CONSTRAINT "fk_rails_29210439a5"
+FOREIGN KEY ("unit_id")
+  REFERENCES "units" ("id")
+)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_leases_on_rental_application_id" ON "leases" ("rental_application_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_leases_on_property_id" ON "leases" ("property_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_leases_on_unit_id" ON "leases" ("unit_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_leases_on_move_in_date" ON "leases" ("move_in_date")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251015185806') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePayments (20251015185821)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "payments" ("id" bigserial primary key, "user_id" bigint NOT NULL, "lease_id" bigint NOT NULL, "amount" decimal(8,2) NOT NULL, "due_date" date NOT NULL, "paid_date" date, "status" integer DEFAULT 0 NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_081dc04a02"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_b77711b98f"
+FOREIGN KEY ("lease_id")
+  REFERENCES "leases" ("id")
+)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_payments_on_user_id" ON "payments" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_payments_on_lease_id" ON "payments" ("lease_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_payments_on_due_date" ON "payments" ("due_date")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_payments_on_status" ON "payments" ("status")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251015185821') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLeaseTenants (20251015185838)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "lease_tenants" ("id" bigserial primary key, "lease_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_df3043dbd4"
+FOREIGN KEY ("lease_id")
+  REFERENCES "leases" ("id")
+, CONSTRAINT "fk_rails_bb0cf78ab5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_lease_tenants_on_lease_id" ON "lease_tenants" ("lease_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_lease_tenants_on_user_id" ON "lease_tenants" ("user_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_lease_tenants_on_lease_id_and_user_id" ON "lease_tenants" ("lease_id", "user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251015185838') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(3408675332363174475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Create (3.3ms)[0m  [1m[32mINSERT INTO "properties" ("name", "address", "office_hours", "pets_allowed", "has_parking", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "The Meadows"], ["address", "123 Meadow Lane, Springfield, IL 62701"], ["office_hours", "Monday-Friday: 9AM-6PM, Saturday: 10AM-4PM"], ["pets_allowed", true], ["has_parking", true], ["created_at", "2025-10-15 20:08:11.371240"], ["updated_at", "2025-10-15 20:08:11.371240"]]
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (4.1ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 1], ["name", "Unit 101"], ["created_at", "2025-10-15 20:08:11.390228"], ["updated_at", "2025-10-15 20:08:11.390228"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (1.0ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 1], ["name", "Unit 102"], ["created_at", "2025-10-15 20:08:11.395984"], ["updated_at", "2025-10-15 20:08:11.395984"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.7ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 1], ["name", "Unit 103"], ["created_at", "2025-10-15 20:08:11.398434"], ["updated_at", "2025-10-15 20:08:11.398434"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:32:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Create (0.8ms)[0m  [1m[32mINSERT INTO "properties" ("name", "address", "office_hours", "pets_allowed", "has_parking", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cassidy South"], ["address", "456 South Street, Springfield, IL 62702"], ["office_hours", "Monday-Friday: 8AM-7PM, Saturday: 9AM-5PM"], ["pets_allowed", false], ["has_parking", true], ["created_at", "2025-10-15 20:08:11.411629"], ["updated_at", "2025-10-15 20:08:11.411629"]]
+  ↳ lib/tasks/fake_data.rake:32:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:32:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.6ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 2], ["name", "Unit 201"], ["created_at", "2025-10-15 20:08:11.413722"], ["updated_at", "2025-10-15 20:08:11.413722"]]
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.6ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 2], ["name", "Unit 202"], ["created_at", "2025-10-15 20:08:11.415170"], ["updated_at", "2025-10-15 20:08:11.415170"]]
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 2]]
+  ↳ lib/tasks/fake_data.rake:53:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "properties"[0m
+  ↳ lib/tasks/fake_data.rake:55:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnit Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "units"[0m
+  ↳ lib/tasks/fake_data.rake:56:in 'block (2 levels) in <top (required)>'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mProperty Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "properties" WHERE "properties"."name" IN ($1, $2) LIMIT $3[0m  [["name", "The Meadows"], ["name", "Cassidy South"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:70:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Load (0.3ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."name" IN ($1, $2)[0m  [["name", "The Meadows"], ["name", "Cassidy South"]]
+  ↳ lib/tasks/fake_data.rake:78:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnit Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 1]]
+  ↳ lib/tasks/fake_data.rake:79:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Load (0.9ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 1]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mProperty Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "properties" WHERE "properties"."name" IN ($1, $2) LIMIT $3[0m  [["name", "The Meadows"], ["name", "Cassidy South"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:70:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."name" IN ($1, $2)[0m  [["name", "The Meadows"], ["name", "Cassidy South"]]
+  ↳ lib/tasks/fake_data.rake:78:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnit Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 1]]
+  ↳ lib/tasks/fake_data.rake:79:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Load (1.2ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 1]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (3.3ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 1]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (2.8ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 1]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.7ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 1]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 2]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 2]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.5ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 3]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 3]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.3ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 3]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."property_id" = $1[0m  [["property_id", 1]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."property_id" = $1[0m  [["property_id", 1]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mProperty Destroy (0.7ms)[0m  [1m[31mDELETE FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 2]]
+  ↳ lib/tasks/fake_data.rake:79:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Load (0.7ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 2]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 4]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 4]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.5ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 4]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 5]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 5]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.4ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 5]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."property_id" = $1[0m  [["property_id", 2]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."property_id" = $1[0m  [["property_id", 2]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mProperty Destroy (0.3ms)[0m  [1m[31mDELETE FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 2]]
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:81:in 'block (3 levels) in <top (required)>'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Create (1.4ms)[0m  [1m[32mINSERT INTO "properties" ("name", "address", "office_hours", "pets_allowed", "has_parking", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "The Meadows"], ["address", "123 Meadow Lane, Springfield, IL 62701"], ["office_hours", "Monday-Friday: 9AM-6PM, Saturday: 10AM-4PM"], ["pets_allowed", true], ["has_parking", true], ["created_at", "2025-10-15 20:08:23.598579"], ["updated_at", "2025-10-15 20:08:23.598579"]]
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (1.5ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 3], ["name", "Unit 101"], ["created_at", "2025-10-15 20:08:23.615125"], ["updated_at", "2025-10-15 20:08:23.615125"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.7ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 3], ["name", "Unit 102"], ["created_at", "2025-10-15 20:08:23.617803"], ["updated_at", "2025-10-15 20:08:23.617803"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.9ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 3], ["name", "Unit 103"], ["created_at", "2025-10-15 20:08:23.620083"], ["updated_at", "2025-10-15 20:08:23.620083"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 3]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:32:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Create (0.7ms)[0m  [1m[32mINSERT INTO "properties" ("name", "address", "office_hours", "pets_allowed", "has_parking", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cassidy South"], ["address", "456 South Street, Springfield, IL 62702"], ["office_hours", "Monday-Friday: 8AM-7PM, Saturday: 9AM-5PM"], ["pets_allowed", false], ["has_parking", true], ["created_at", "2025-10-15 20:08:23.630973"], ["updated_at", "2025-10-15 20:08:23.630973"]]
+  ↳ lib/tasks/fake_data.rake:32:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:32:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.7ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 4], ["name", "Unit 201"], ["created_at", "2025-10-15 20:08:23.632906"], ["updated_at", "2025-10-15 20:08:23.632906"]]
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.7ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 4], ["name", "Unit 202"], ["created_at", "2025-10-15 20:08:23.634547"], ["updated_at", "2025-10-15 20:08:23.634547"]]
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 4]]
+  ↳ lib/tasks/fake_data.rake:53:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "properties"[0m
+  ↳ lib/tasks/fake_data.rake:55:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnit Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "units"[0m
+  ↳ lib/tasks/fake_data.rake:56:in 'block (2 levels) in <top (required)>'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mProperty Load (1.0ms)[0m  [1m[34mSELECT "properties".* FROM "properties" ORDER BY "properties"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]

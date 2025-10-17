@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { Button, Typography, Stack } from '@mui/material';
+import { Button, Typography, Stack, Card, CardContent, CardActionArea, Box } from '@mui/material';
 
 export default function Welcome() {
   const { user, logout, loading } = useAuth();
@@ -24,6 +24,10 @@ export default function Welcome() {
       // Even if logout fails, redirect to home
       router.push('/');
     }
+  };
+
+  const handleLeaseClick = () => {
+    router.push('/leasing');
   };
 
   if (loading) {
@@ -58,7 +62,7 @@ export default function Welcome() {
         backgroundColor: '#161748',
       }}
     >
-      <div className="text-center">
+      <div className="text-center w-full max-w-6xl px-4">
         <Typography
           variant="h2"
           component="h1"
@@ -66,26 +70,199 @@ export default function Welcome() {
             color: '#f95d9b',
             fontFamily: 'var(--font-lora), serif',
             fontWeight: 'bold',
-            mb: 4,
+            mb: 6,
           }}
         >
-          Welcome Home.
+          What do you want to do?
         </Typography>
         
-        <Stack direction="row" spacing={2} sx={{ justifyContent: 'center' }}>
+        {/* Three large card-style buttons */}
+        <Stack 
+          direction={{ xs: 'column', md: 'row' }} 
+          spacing={4} 
+          sx={{ 
+            justifyContent: 'center',
+            alignItems: 'stretch',
+            mb: 4
+          }}
+        >
+          {/* Leasing Card */}
+          <Card 
+            sx={{ 
+              flex: 1,
+              maxWidth: 300,
+              backgroundColor: '#478559',
+              borderRadius: 3,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+                transition: 'all 0.3s ease-in-out'
+              }
+            }}
+          >
+            <CardActionArea 
+              onClick={handleLeaseClick}
+              sx={{ 
+                height: '100%',
+                p: 3,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: 200
+              }}
+            >
+              <CardContent sx={{ textAlign: 'center' }}>
+                <Typography
+                  variant="h4"
+                  component="h2"
+                  sx={{
+                    color: '#FFFFFF',
+                    fontFamily: 'var(--font-lora), serif',
+                    fontWeight: 'bold',
+                    mb: 2
+                  }}
+                >
+                  Lease
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#D3D3D3',
+                    fontSize: '1.1rem'
+                  }}
+                >
+                  Find an apartment
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+
+          {/* Live Card */}
+          <Card 
+            sx={{ 
+              flex: 1,
+              maxWidth: 300,
+              backgroundColor: '#39a0ca',
+              borderRadius: 3,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+                transition: 'all 0.3s ease-in-out'
+              }
+            }}
+          >
+            <CardActionArea 
+              sx={{ 
+                height: '100%',
+                p: 3,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: 200
+              }}
+            >
+              <CardContent sx={{ textAlign: 'center' }}>
+                <Typography
+                  variant="h4"
+                  component="h2"
+                  sx={{
+                    color: '#FFFFFF',
+                    fontFamily: 'var(--font-lora), serif',
+                    fontWeight: 'bold',
+                    mb: 2
+                  }}
+                >
+                  Live
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#D3D3D3',
+                    fontSize: '1.1rem'
+                  }}
+                >
+                  Connect with your community
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+
+          {/* Rewards Card */}
+          <Card 
+            sx={{ 
+              flex: 1,
+              maxWidth: 300,
+              backgroundColor: '#f95d9b',
+              borderRadius: 3,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+                transition: 'all 0.3s ease-in-out'
+              }
+            }}
+          >
+            <CardActionArea 
+              sx={{ 
+                height: '100%',
+                p: 3,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: 200
+              }}
+            >
+              <CardContent sx={{ textAlign: 'center' }}>
+                <Typography
+                  variant="h4"
+                  component="h2"
+                  sx={{
+                    color: '#FFFFFF',
+                    fontFamily: 'var(--font-lora), serif',
+                    fontWeight: 'bold',
+                    mb: 2
+                  }}
+                >
+                  Rewards
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#D3D3D3',
+                    fontSize: '1.1rem'
+                  }}
+                >
+                  earn points, get benefits
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Stack>
+
+        {/* Sign Out Button */}
+        <Box sx={{ mt: 4 }}>
           <Button
-            variant="contained"
+            variant="outlined"
             size="large"
             onClick={handleSignOut}
             sx={{
-              backgroundColor: '#478559',
-              color: '#FFFFFF',
-              '&:hover': { backgroundColor: '#3d734c' },
+              color: '#D3D3D3',
+              borderColor: '#D3D3D3',
+              '&:hover': {
+                borderColor: '#FFFFFF',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                color: '#FFFFFF'
+              }
             }}
           >
             Sign Out
           </Button>
-        </Stack>
+        </Box>
       </div>
     </div>
   );

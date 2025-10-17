@@ -25,6 +25,7 @@ class ApiService {
         'Content-Type': 'application/json',
         ...options.headers,
       },
+      credentials: 'include', // Include cookies for session-based auth
       ...options,
     };
 
@@ -97,6 +98,11 @@ class ApiService {
         } 
       }),
     });
+  }
+
+  // Units endpoints
+  async getUnits(): Promise<any[]> {
+    return this.request<any[]>('/api/v1/units');
   }
 
 }

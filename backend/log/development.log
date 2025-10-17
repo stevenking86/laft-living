@@ -867,3 +867,278 @@ DEPRECATION WARNING: `to_time` will always preserve the full timezone rather tha
 DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
 DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
   [1m[36mProperty Load (1.0ms)[0m  [1m[34mSELECT "properties".* FROM "properties" ORDER BY "properties"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2025-10-15 21:53:22 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "stevenking86@gmail.com", "password" => "Password123!", "auth" => {"email" => "stevenking86@gmail.com", "password" => "Password123!"}}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 200 OK in 20ms (Views: 0.5ms | ActiveRecord: 6.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnit Load (3.0ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api/v1/auth/me" for 127.0.0.1 at 2025-10-17 09:46:48 +0100
+Processing by Api::V1::AuthController#me as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (24.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:45:in 'Api::V1::AuthController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 30ms (Views: 0.2ms | ActiveRecord: 32.1ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2025-10-17 09:46:53 +0100
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "stevenking86@gmail.com", "password" => "Password123!", "auth" => {"email" => "stevenking86@gmail.com", "password" => "Password123!"}}
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 4.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/me" for 127.0.0.1 at 2025-10-17 09:52:13 +0100
+Processing by Api::V1::AuthController#me as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:45:in 'Api::V1::AuthController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 19ms (Views: 0.2ms | ActiveRecord: 13.0ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2025-10-17 09:52:19 +0100
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "stevenking86@gmail.com", "password" => "Password123!", "auth" => {"email" => "stevenking86@gmail.com", "password" => "Password123!"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 200 OK in 27ms (Views: 0.3ms | ActiveRecord: 6.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mLease Load (20.7ms)[0m  [1m[34mSELECT "leases".* FROM "leases" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/api/v1/auth/me" for 127.0.0.1 at 2025-10-17 09:53:51 +0100
+Processing by Api::V1::AuthController#me as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:45:in 'Api::V1::AuthController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 10ms (Views: 0.1ms | ActiveRecord: 5.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/auth/me" for 127.0.0.1 at 2025-10-17 09:54:09 +0100
+Processing by Api::V1::AuthController#me as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:45:in 'Api::V1::AuthController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 17ms (Views: 2.2ms | ActiveRecord: 2.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Create (3.6ms)[0m  [1m[32mINSERT INTO "properties" ("name", "address", "office_hours", "pets_allowed", "has_parking", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "The Meadows"], ["address", "123 Meadow Lane, Springfield, IL 62701"], ["office_hours", "Monday-Friday: 9AM-6PM, Saturday: 10AM-4PM"], ["pets_allowed", true], ["has_parking", true], ["created_at", "2025-10-17 08:54:12.261692"], ["updated_at", "2025-10-17 08:54:12.261692"]]
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (2.6ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 5], ["name", "Unit 101"], ["created_at", "2025-10-17 08:54:12.279591"], ["updated_at", "2025-10-17 08:54:12.279591"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.9ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 5], ["name", "Unit 102"], ["created_at", "2025-10-17 08:54:12.284150"], ["updated_at", "2025-10-17 08:54:12.284150"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.6ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 5], ["name", "Unit 103"], ["created_at", "2025-10-17 08:54:12.286097"], ["updated_at", "2025-10-17 08:54:12.286097"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 5]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:32:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Create (0.8ms)[0m  [1m[32mINSERT INTO "properties" ("name", "address", "office_hours", "pets_allowed", "has_parking", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cassidy South"], ["address", "456 South Street, Springfield, IL 62702"], ["office_hours", "Monday-Friday: 8AM-7PM, Saturday: 9AM-5PM"], ["pets_allowed", false], ["has_parking", true], ["created_at", "2025-10-17 08:54:12.297170"], ["updated_at", "2025-10-17 08:54:12.297170"]]
+  ↳ lib/tasks/fake_data.rake:32:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:32:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (1.4ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 6], ["name", "Unit 201"], ["created_at", "2025-10-17 08:54:12.299284"], ["updated_at", "2025-10-17 08:54:12.299284"]]
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (2.3ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 6], ["name", "Unit 202"], ["created_at", "2025-10-17 08:54:12.315672"], ["updated_at", "2025-10-17 08:54:12.315672"]]
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:47:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 6]]
+  ↳ lib/tasks/fake_data.rake:53:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "properties"[0m
+  ↳ lib/tasks/fake_data.rake:55:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnit Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "units"[0m
+  ↳ lib/tasks/fake_data.rake:56:in 'block (2 levels) in <top (required)>'
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2025-10-17 09:54:24 +0100
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "stevenking86@gmail.com", "password" => "Password123!", "auth" => {"email" => "stevenking86@gmail.com", "password" => "Password123!"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 200 OK in 12ms (Views: 0.1ms | ActiveRecord: 6.2ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-10-17 09:54:25 +0100
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 2.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-10-17 09:54:25 +0100
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUnit Load (2.2ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUnit Load (0.5ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnit Load (1.4ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLease Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 15], [nil, "2025-10-17"], ["LIMIT", 1]]
+Started GET "/api/v1/units" for ::1 at 2025-10-17 09:56:10 +0100
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 7ms (Views: 0.1ms | ActiveRecord: 5.4ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2025-10-17 09:58:29 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "stevenking86@gmail.com", "password" => "Password123!", "auth" => {"email" => "stevenking86@gmail.com", "password" => "Password123!"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 200 OK in 39ms (Views: 0.2ms | ActiveRecord: 16.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-10-17 09:58:31 +0100
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+  [1m[36mUnit Load (4.2ms)[0m  [1m[34mSELECT DISTINCT "units".* FROM "units" LEFT OUTER JOIN "leases" ON "leases"."unit_id" = "units"."id" WHERE (leases.id IS NULL OR leases.move_out_date <= $1)[0m  [[nil, "2025-10-17"]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.8ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" IN ($1, $2, $3, $4)[0m  [["id", 3], ["id", 5], ["id", 6], ["id", 4]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 6], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (2.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 6], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 11], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.4ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 11], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 12], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 12], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 14], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.4ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 14], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 13], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.3ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 13], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 8], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 8], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 15], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.3ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 15], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 9], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 9], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 7], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.7ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 7], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 10], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 10], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+Completed 200 OK in 1173ms (Views: 0.1ms | ActiveRecord: 29.1ms (23 queries, 0 cached) | GC: 20.2ms)
+
+
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-10-17 09:58:32 +0100
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+  [1m[36mUnit Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "units".* FROM "units" LEFT OUTER JOIN "leases" ON "leases"."unit_id" = "units"."id" WHERE (leases.id IS NULL OR leases.move_out_date <= $1)[0m  [[nil, "2025-10-17"]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" IN ($1, $2, $3, $4)[0m  [["id", 3], ["id", 5], ["id", 6], ["id", 4]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 6], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 6], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 11], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 11], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 12], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 12], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 14], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 14], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 13], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 13], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 8], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.3ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 8], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 15], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 15], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 9], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 9], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 7], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 7], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 10], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:12:in 'Unit#available?'
+  [1m[36mLease Load (0.7ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 10], [nil, "2025-10-17"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:17:in 'Unit#current_lease'
+Completed 200 OK in 32ms (Views: 0.3ms | ActiveRecord: 5.7ms (23 queries, 0 cached) | GC: 2.1ms)
+
+

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unit: one
+  term: "12 months"
+  price: 950.00
+
+two:
+  unit: two
+  term: "12 months"
+  price: 950.00

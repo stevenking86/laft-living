@@ -1328,3 +1328,458 @@ Processing by Api::V1::UnitsController#index as */*
 Completed 200 OK in 175ms (Views: 0.4ms | ActiveRecord: 23.7ms (23 queries, 0 cached) | GC: 36.0ms)
 
 
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3408675332363174475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateUnitMonthlyPrices (20251017091748)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "unit_monthly_prices" ("id" bigserial primary key, "unit_id" bigint NOT NULL, "term" character varying NOT NULL, "price" decimal(10,2) NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_a755434ecc"
+FOREIGN KEY ("unit_id")
+  REFERENCES "units" ("id")
+)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_unit_monthly_prices_on_unit_id" ON "unit_monthly_prices" ("unit_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_unit_monthly_prices_on_unit_id_and_term" ON "unit_monthly_prices" ("unit_id", "term")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251017091748') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3408675332363174475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mProperty Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "properties" WHERE "properties"."name" IN ($1, $2) LIMIT $3[0m  [["name", "The Meadows"], ["name", "Cassidy South"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:86:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Load (0.9ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."name" IN ($1, $2)[0m  [["name", "The Meadows"], ["name", "Cassidy South"]]
+  ↳ lib/tasks/fake_data.rake:94:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnit Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 3]]
+  ↳ lib/tasks/fake_data.rake:95:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Load (0.7ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 3]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (1.3ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 6]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (1.0ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 6]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mProperty Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "properties" WHERE "properties"."name" IN ($1, $2) LIMIT $3[0m  [["name", "The Meadows"], ["name", "Cassidy South"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:86:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Load (0.5ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."name" IN ($1, $2)[0m  [["name", "The Meadows"], ["name", "Cassidy South"]]
+  ↳ lib/tasks/fake_data.rake:94:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnit Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 3]]
+  ↳ lib/tasks/fake_data.rake:95:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Load (0.8ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 3]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.7ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 6]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (1.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 6]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Load (2.0ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 6]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (1.0ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 6]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 7]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 7]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Load (0.1ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 7]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.3ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 7]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 8]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 8]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Load (0.2ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 8]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.8ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 8]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.3ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."property_id" = $1[0m  [["property_id", 3]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.3ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."property_id" = $1[0m  [["property_id", 3]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mProperty Destroy (1.0ms)[0m  [1m[31mDELETE FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 3]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 4]]
+  ↳ lib/tasks/fake_data.rake:95:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Load (0.7ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 4]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 9]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 9]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Load (0.1ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 9]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.3ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 9]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 10]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 10]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Load (0.1ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 10]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.3ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 10]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."property_id" = $1[0m  [["property_id", 4]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."property_id" = $1[0m  [["property_id", 4]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mProperty Destroy (0.4ms)[0m  [1m[31mDELETE FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 4]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 5]]
+  ↳ lib/tasks/fake_data.rake:95:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Load (0.7ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 5]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 11]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 11]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Load (0.2ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 11]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.7ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 11]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 12]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 12]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Load (0.1ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 12]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.4ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 12]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 13]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 13]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Load (0.1ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 13]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.2ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 13]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."property_id" = $1[0m  [["property_id", 5]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."property_id" = $1[0m  [["property_id", 5]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mProperty Destroy (0.4ms)[0m  [1m[31mDELETE FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 5]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 6]]
+  ↳ lib/tasks/fake_data.rake:95:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Load (0.5ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 6]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 14]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 14]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Load (0.1ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 14]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.4ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 14]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."unit_id" = $1[0m  [["unit_id", 15]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1[0m  [["unit_id", 15]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Load (0.1ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 15]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Destroy (0.2ms)[0m  [1m[31mDELETE FROM "units" WHERE "units"."id" = $1[0m  [["id", 15]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."property_id" = $1[0m  [["property_id", 6]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."property_id" = $1[0m  [["property_id", 6]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mProperty Destroy (0.7ms)[0m  [1m[31mDELETE FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 6]]
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:97:in 'block (3 levels) in <top (required)>'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Create (3.0ms)[0m  [1m[32mINSERT INTO "properties" ("name", "address", "office_hours", "pets_allowed", "has_parking", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "The Meadows"], ["address", "123 Meadow Lane, Springfield, IL 62701"], ["office_hours", "Monday-Friday: 9AM-6PM, Saturday: 10AM-4PM"], ["pets_allowed", true], ["has_parking", true], ["created_at", "2025-10-17 09:18:37.013498"], ["updated_at", "2025-10-17 09:18:37.013498"]]
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (2.1ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 7], ["name", "Unit 101"], ["created_at", "2025-10-17 09:18:37.030232"], ["updated_at", "2025-10-17 09:18:37.030232"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 16], ["term", "9 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (2.1ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 16], ["term", "9 months"], ["price", "1000.0"], ["created_at", "2025-10-17 09:18:37.048368"], ["updated_at", "2025-10-17 09:18:37.048368"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 16], ["term", "12 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.3ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 16], ["term", "12 months"], ["price", "950.0"], ["created_at", "2025-10-17 09:18:37.053463"], ["updated_at", "2025-10-17 09:18:37.053463"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 16], ["term", "24 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.3ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 16], ["term", "24 months"], ["price", "900.0"], ["created_at", "2025-10-17 09:18:37.056845"], ["updated_at", "2025-10-17 09:18:37.056845"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.7ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 7], ["name", "Unit 102"], ["created_at", "2025-10-17 09:18:37.058846"], ["updated_at", "2025-10-17 09:18:37.058846"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 17], ["term", "9 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 17], ["term", "9 months"], ["price", "1000.0"], ["created_at", "2025-10-17 09:18:37.061969"], ["updated_at", "2025-10-17 09:18:37.061969"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 17], ["term", "12 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.4ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 17], ["term", "12 months"], ["price", "950.0"], ["created_at", "2025-10-17 09:18:37.064474"], ["updated_at", "2025-10-17 09:18:37.064474"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 17], ["term", "24 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.4ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 17], ["term", "24 months"], ["price", "900.0"], ["created_at", "2025-10-17 09:18:37.067249"], ["updated_at", "2025-10-17 09:18:37.067249"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (2.0ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 7], ["name", "Unit 103"], ["created_at", "2025-10-17 09:18:37.068702"], ["updated_at", "2025-10-17 09:18:37.068702"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 18], ["term", "9 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.1ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 18], ["term", "9 months"], ["price", "1000.0"], ["created_at", "2025-10-17 09:18:37.073140"], ["updated_at", "2025-10-17 09:18:37.073140"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 18], ["term", "12 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.3ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 18], ["term", "12 months"], ["price", "950.0"], ["created_at", "2025-10-17 09:18:37.076094"], ["updated_at", "2025-10-17 09:18:37.076094"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 18], ["term", "24 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.3ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 18], ["term", "24 months"], ["price", "900.0"], ["created_at", "2025-10-17 09:18:37.078876"], ["updated_at", "2025-10-17 09:18:37.078876"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 7]]
+  ↳ lib/tasks/fake_data.rake:36:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:39:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Create (0.8ms)[0m  [1m[32mINSERT INTO "properties" ("name", "address", "office_hours", "pets_allowed", "has_parking", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cassidy South"], ["address", "456 South Street, Springfield, IL 62702"], ["office_hours", "Monday-Friday: 8AM-7PM, Saturday: 9AM-5PM"], ["pets_allowed", false], ["has_parking", true], ["created_at", "2025-10-17 09:18:37.084644"], ["updated_at", "2025-10-17 09:18:37.084644"]]
+  ↳ lib/tasks/fake_data.rake:39:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:39:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.8ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 8], ["name", "Unit 201"], ["created_at", "2025-10-17 09:18:37.086648"], ["updated_at", "2025-10-17 09:18:37.086648"]]
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (10.9ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 19], ["term", "9 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.3ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 19], ["term", "9 months"], ["price", "1000.0"], ["created_at", "2025-10-17 09:18:37.100108"], ["updated_at", "2025-10-17 09:18:37.100108"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 19], ["term", "12 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.3ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 19], ["term", "12 months"], ["price", "950.0"], ["created_at", "2025-10-17 09:18:37.103014"], ["updated_at", "2025-10-17 09:18:37.103014"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 19], ["term", "24 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.3ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 19], ["term", "24 months"], ["price", "900.0"], ["created_at", "2025-10-17 09:18:37.105466"], ["updated_at", "2025-10-17 09:18:37.105466"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.8ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 8], ["name", "Unit 202"], ["created_at", "2025-10-17 09:18:37.108463"], ["updated_at", "2025-10-17 09:18:37.108463"]]
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 20], ["term", "9 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.1ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 20], ["term", "9 months"], ["price", "1000.0"], ["created_at", "2025-10-17 09:18:37.111553"], ["updated_at", "2025-10-17 09:18:37.111553"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 20], ["term", "12 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 20], ["term", "12 months"], ["price", "950.0"], ["created_at", "2025-10-17 09:18:37.113951"], ["updated_at", "2025-10-17 09:18:37.113951"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 20], ["term", "24 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 20], ["term", "24 months"], ["price", "900.0"], ["created_at", "2025-10-17 09:18:37.117093"], ["updated_at", "2025-10-17 09:18:37.117093"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 8]]
+  ↳ lib/tasks/fake_data.rake:67:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "properties"[0m
+  ↳ lib/tasks/fake_data.rake:69:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnit Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "units"[0m
+  ↳ lib/tasks/fake_data.rake:70:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "unit_monthly_prices"[0m
+  ↳ lib/tasks/fake_data.rake:71:in 'block (2 levels) in <top (required)>'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnitMonthlyPrice Load (19.3ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices"[0m
+  [1m[36mUnit Load (0.6ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.2ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnitMonthlyPrice Load (13.9ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices"[0m
+  [1m[36mUnit Load (0.6ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.2ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.2ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnitMonthlyPrice Load (16.7ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices"[0m
+  [1m[36mUnit Load (0.7ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.3ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.5ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mCACHE Unit Load (0.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnit Load (1.6ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUnitMonthlyPrice Count (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 16]]
+  [1m[36mUnitMonthlyPrice Load (0.3ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 16]]
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnit Load (0.9ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUnitMonthlyPrice Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 16]]
+  [1m[36mUnitMonthlyPrice Load (0.4ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 16]]
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnit Load (0.9ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUnitMonthlyPrice Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 16]]
+  [1m[36mUnitMonthlyPrice Load (0.3ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 16]]
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3408675332363174475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to ReplaceTermWithUnitMonthlyPriceInRentalApplications (20251017092002)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "rental_applications" DROP COLUMN "term"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "rental_applications" ADD "unit_monthly_price_id" bigint NOT NULL[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE INDEX "index_rental_applications_on_unit_monthly_price_id" ON "rental_applications" ("unit_monthly_price_id")[0m
+  [1m[35m (7.0ms)[0m  [1m[35mALTER TABLE "rental_applications" ADD CONSTRAINT "fk_rails_a589f39559"
+FOREIGN KEY ("unit_monthly_price_id")
+  REFERENCES "unit_monthly_prices" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251017092002') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3408675332363174475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnit Load (1.3ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUnitMonthlyPrice Load (0.6ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 ORDER BY "unit_monthly_prices"."id" ASC LIMIT $2[0m  [["unit_id", 16], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mProperty Load (0.6ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnit Load (3.1ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUnit Load (0.5ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUnitMonthlyPrice Load (1.2ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 ORDER BY "unit_monthly_prices"."id" ASC LIMIT $2[0m  [["unit_id", 17], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mProperty Load (0.7ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]

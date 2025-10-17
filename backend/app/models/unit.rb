@@ -2,6 +2,7 @@ class Unit < ApplicationRecord
   belongs_to :property
   has_many :rental_applications, dependent: :destroy
   has_many :leases, dependent: :destroy
+  has_many :unit_monthly_prices, dependent: :destroy
 
   validates :name, presence: true
   validates :property, presence: true

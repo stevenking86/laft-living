@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_15_185838) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_17_092002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -70,14 +70,25 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_15_185838) do
     t.bigint "property_id", null: false
     t.bigint "unit_id", null: false
     t.date "move_in_date", null: false
-    t.integer "term", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "unit_monthly_price_id", null: false
     t.index ["property_id"], name: "index_rental_applications_on_property_id"
     t.index ["status"], name: "index_rental_applications_on_status"
     t.index ["unit_id"], name: "index_rental_applications_on_unit_id"
+    t.index ["unit_monthly_price_id"], name: "index_rental_applications_on_unit_monthly_price_id"
     t.index ["user_id"], name: "index_rental_applications_on_user_id"
+  end
+
+  create_table "unit_monthly_prices", force: :cascade do |t|
+    t.bigint "unit_id", null: false
+    t.string "term", null: false
+    t.decimal "price", precision: 10, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id", "term"], name: "index_unit_monthly_prices_on_unit_id_and_term", unique: true
+    t.index ["unit_id"], name: "index_unit_monthly_prices_on_unit_id"
   end
 
   create_table "units", force: :cascade do |t|
@@ -115,8 +126,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_15_185838) do
   add_foreign_key "payments", "leases"
   add_foreign_key "payments", "users"
   add_foreign_key "rental_applications", "properties"
+  add_foreign_key "rental_applications", "unit_monthly_prices"
   add_foreign_key "rental_applications", "units"
   add_foreign_key "rental_applications", "users"
+  add_foreign_key "unit_monthly_prices", "units"
   add_foreign_key "units", "properties"
   add_foreign_key "verifications", "rental_applications"
   add_foreign_key "verifications", "users"

@@ -20,10 +20,17 @@ namespace :fake_data do
     ]
     
     meadows_units.each do |unit_name|
-      Unit.create!(
+      unit = Unit.create!(
         property: meadows,
         name: unit_name
       )
+      
+      # Create pricing tiers for this unit (shorter terms = higher prices)
+      UnitMonthlyPrice.create!([
+        { unit: unit, term: "9 months", price: 1000.00 },
+        { unit: unit, term: "12 months", price: 950.00 },
+        { unit: unit, term: "24 months", price: 900.00 }
+      ])
     end
     
     puts "✅ Created property: #{meadows.name} with #{meadows.units.count} units"
@@ -44,20 +51,29 @@ namespace :fake_data do
     ]
     
     cassidy_units.each do |unit_name|
-      Unit.create!(
+      unit = Unit.create!(
         property: cassidy,
         name: unit_name
       )
+      
+      # Create pricing tiers for this unit (shorter terms = higher prices)
+      UnitMonthlyPrice.create!([
+        { unit: unit, term: "9 months", price: 1000.00 },
+        { unit: unit, term: "12 months", price: 950.00 },
+        { unit: unit, term: "24 months", price: 900.00 }
+      ])
     end
     
     puts "✅ Created property: #{cassidy.name} with #{cassidy.units.count} units"
     
     total_properties = Property.count
     total_units = Unit.count
+    total_prices = UnitMonthlyPrice.count
     
     puts "🎉 Fake data seeding complete!"
     puts "   Total properties: #{total_properties}"
     puts "   Total units: #{total_units}"
+    puts "   Total unit monthly prices: #{total_prices}"
   end
 
   desc "Destroy all fake test data"

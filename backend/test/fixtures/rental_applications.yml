@@ -4,14 +4,14 @@ one:
   user: one
   property: one
   unit: one
+  unit_monthly_price: one
   move_in_date: 2025-10-15
-  term: 1
   status: 1
 
 two:
   user: two
   property: two
   unit: two
+  unit_monthly_price: two
   move_in_date: 2025-10-15
-  term: 1
   status: 1

@@ -142,7 +142,7 @@ export default function Leasing() {
               mb: 3,
             }}
           >
-            Find your perfect home from our available units
+            Find your perfect home from our available units near you. 
           </Typography>
         </Box>
 
@@ -176,14 +176,27 @@ export default function Leasing() {
             </Typography>
           </Card>
         ) : (
-          <Grid container spacing={3}>
+          <Box 
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: '1fr',
+                sm: 'repeat(2, 1fr)',
+                md: 'repeat(3, 1fr)'
+              },
+              gap: 3
+            }}
+          >
             {units.map((unit) => (
-              <Grid item xs={12} sm={6} md={4} key={unit.id}>
+              <Box key={unit.id}>
                 <Card 
                   sx={{ 
                     backgroundColor: '#478559',
                     borderRadius: 3,
                     boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
                     '&:hover': {
                       transform: 'translateY(-4px)',
                       boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
@@ -191,7 +204,7 @@ export default function Leasing() {
                     }
                   }}
                 >
-                  <CardContent sx={{ p: 3 }}>
+                  <CardContent sx={{ p: 3, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                     {/* Unit Header */}
                     <Box sx={{ mb: 2 }}>
                       <Typography
@@ -243,18 +256,6 @@ export default function Leasing() {
                       >
                         {unit.property.address}
                       </Typography>
-
-                      {unit.property.office_hours && (
-                        <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1, ml: 3 }}>
-                          <Schedule sx={{ color: '#D3D3D3', fontSize: 16 }} />
-                          <Typography
-                            variant="body2"
-                            sx={{ color: '#D3D3D3' }}
-                          >
-                            {unit.property.office_hours}
-                          </Typography>
-                        </Stack>
-                      )}
                     </Box>
 
                     {/* Property Features */}
@@ -292,25 +293,27 @@ export default function Leasing() {
                     </Box>
 
                     {/* Action Button */}
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      sx={{
-                        backgroundColor: '#f95d9b',
-                        color: '#FFFFFF',
-                        fontWeight: 'bold',
-                        '&:hover': {
-                          backgroundColor: '#e54a8a'
-                        }
-                      }}
-                    >
-                      View Details
-                    </Button>
+                    <Box sx={{ mt: 'auto', pt: 2 }}>
+                      <Button
+                        variant="contained"
+                        fullWidth
+                        sx={{
+                          backgroundColor: '#f95d9b',
+                          color: '#FFFFFF',
+                          fontWeight: 'bold',
+                          '&:hover': {
+                            backgroundColor: '#e54a8a'
+                          }
+                        }}
+                      >
+                        Apply
+                      </Button>
+                    </Box>
                   </CardContent>
                 </Card>
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
         )}
       </div>
     </div>

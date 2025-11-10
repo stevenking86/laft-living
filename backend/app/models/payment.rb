@@ -2,7 +2,7 @@ class Payment < ApplicationRecord
   belongs_to :user
   belongs_to :lease
 
-  enum status: { pending: 0, paid: 1, late: 2 }
+  enum :status, { pending: 0, paid: 1, late: 2 }
 
   validates :user, presence: true
   validates :lease, presence: true

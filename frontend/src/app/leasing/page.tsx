@@ -58,10 +58,18 @@ export default function Leasing() {
 
   const fetchAvailableUnits = async () => {
     try {
+      setLoadingUnits(true);
       const data = await apiService.getUnits();
       setUnits(data);
+      console.log('Fetched units:', data);
     } catch (error) {
       console.error('Error fetching units:', error);
+      // If authentication error, redirect to sign in
+      if (error instanceof Error && error.message.includes('401') || error.message.includes('Authentication')) {
+        console.error('Authentication required - redirecting to sign in');
+        router.push('/signin');
+      }
+      setUnits([]);
     } finally {
       setLoadingUnits(false);
     }
@@ -147,7 +155,7 @@ export default function Leasing() {
         </Box>
 
         {/* Units Grid */}
-        {units.length === 0 ? (
+        {!loadingUnits && units.length === 0 ? (
           <Card 
             sx={{ 
               backgroundColor: '#39a0ca',

@@ -20,6 +20,13 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# Add PostgreSQL to PATH if installed via Homebrew
+if [ -d "/opt/homebrew/opt/postgresql@15/bin" ]; then
+    export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+elif [ -d "/usr/local/opt/postgresql@15/bin" ]; then
+    export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
+fi
+
 # Check prerequisites
 echo "🔍 Checking prerequisites..."
 

@@ -17,7 +17,8 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      # Temporarily skip session assignment due to session store issues
+      # Automatically log in the user after signup
+      session[:user_id] = @user.id
       render json: {
         message: 'User created successfully',
         user: {

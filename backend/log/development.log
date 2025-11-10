@@ -1783,3 +1783,588 @@ DEPRECATION WARNING: `to_time` will always preserve the full timezone rather tha
   [1m[36mUnitMonthlyPrice Load (1.2ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 ORDER BY "unit_monthly_prices"."id" ASC LIMIT $2[0m  [["unit_id", 17], ["LIMIT", 1]]
   [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mProperty Load (0.7ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO public[0m
+  [1m[35m (50.6ms)[0m  [1m[35mCREATE DATABASE "laft_development" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE DATABASE "laft_test" ENCODING = 'unicode'[0m
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3408675332363174475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3408675332363174475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started POST "/api/v1/users" for 127.0.0.1 at 2025-11-10 15:06:56 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user" => {"name" => "Steeeee test", "email" => "stevenking86+1@gmail.com", "password" => "Password123!", "password_confirmation" => "Password123!"}}
+[31mUnpermitted parameters: :password, :password_confirmation. Context: { controller: Api::V1::UsersController, action: create, request: #<ActionDispatch::Request:0x0000000126b9f790>, params: {"user" => {"name" => "Steeeee test", "email" => "stevenking86+1@gmail.com", "password" => "Password123!", "password_confirmation" => "Password123!"}, "controller" => "api/v1/users", "action" => "create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Exists? (3.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86+1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Create (3.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Steeeee test"], ["email", "stevenking86+1@gmail.com"], ["created_at", "2025-11-10 15:06:56.834438"], ["updated_at", "2025-11-10 15:06:56.834438"], ["password_digest", nil]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+Completed 201 Created in 36ms (Views: 0.1ms | ActiveRecord: 18.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-11-10 15:06:59 +0000
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 0.3ms | ActiveRecord: 3.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-11-10 15:06:59 +0000
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRentalApplication Load (2.6ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[36mVerification Load (1.5ms)[0m  [1m[34mSELECT "verifications".* FROM "verifications" WHERE "verifications"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Create (3.8ms)[0m  [1m[32mINSERT INTO "properties" ("name", "address", "office_hours", "pets_allowed", "has_parking", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "The Meadows"], ["address", "123 Meadow Lane, Springfield, IL 62701"], ["office_hours", "Monday-Friday: 9AM-6PM, Saturday: 10AM-4PM"], ["pets_allowed", true], ["has_parking", true], ["created_at", "2025-11-10 15:07:29.005857"], ["updated_at", "2025-11-10 15:07:29.005857"]]
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:7:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (3.1ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 9], ["name", "Unit 101"], ["created_at", "2025-11-10 15:07:29.022583"], ["updated_at", "2025-11-10 15:07:29.022583"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 21], ["term", "9 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (1.4ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 21], ["term", "9 months"], ["price", "1000.0"], ["created_at", "2025-11-10 15:07:29.040829"], ["updated_at", "2025-11-10 15:07:29.040829"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 21], ["term", "12 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 21], ["term", "12 months"], ["price", "950.0"], ["created_at", "2025-11-10 15:07:29.044963"], ["updated_at", "2025-11-10 15:07:29.044963"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 21], ["term", "24 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 21], ["term", "24 months"], ["price", "900.0"], ["created_at", "2025-11-10 15:07:29.047652"], ["updated_at", "2025-11-10 15:07:29.047652"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.6ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 9], ["name", "Unit 102"], ["created_at", "2025-11-10 15:07:29.048891"], ["updated_at", "2025-11-10 15:07:29.048891"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 22], ["term", "9 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.5ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 22], ["term", "9 months"], ["price", "1000.0"], ["created_at", "2025-11-10 15:07:29.051726"], ["updated_at", "2025-11-10 15:07:29.051726"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 22], ["term", "12 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.5ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 22], ["term", "12 months"], ["price", "950.0"], ["created_at", "2025-11-10 15:07:29.055438"], ["updated_at", "2025-11-10 15:07:29.055438"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 22], ["term", "24 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 22], ["term", "24 months"], ["price", "900.0"], ["created_at", "2025-11-10 15:07:29.058113"], ["updated_at", "2025-11-10 15:07:29.058113"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.8ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 9], ["name", "Unit 103"], ["created_at", "2025-11-10 15:07:29.060343"], ["updated_at", "2025-11-10 15:07:29.060343"]]
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:23:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 23], ["term", "9 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 23], ["term", "9 months"], ["price", "1000.0"], ["created_at", "2025-11-10 15:07:29.063466"], ["updated_at", "2025-11-10 15:07:29.063466"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 23], ["term", "12 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 23], ["term", "12 months"], ["price", "950.0"], ["created_at", "2025-11-10 15:07:29.065767"], ["updated_at", "2025-11-10 15:07:29.065767"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 23], ["term", "24 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 23], ["term", "24 months"], ["price", "900.0"], ["created_at", "2025-11-10 15:07:29.067995"], ["updated_at", "2025-11-10 15:07:29.067995"]]
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:29:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 9]]
+  ↳ lib/tasks/fake_data.rake:36:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:39:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Create (0.7ms)[0m  [1m[32mINSERT INTO "properties" ("name", "address", "office_hours", "pets_allowed", "has_parking", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cassidy South"], ["address", "456 South Street, Springfield, IL 62702"], ["office_hours", "Monday-Friday: 8AM-7PM, Saturday: 9AM-5PM"], ["pets_allowed", false], ["has_parking", true], ["created_at", "2025-11-10 15:07:29.074250"], ["updated_at", "2025-11-10 15:07:29.074250"]]
+  ↳ lib/tasks/fake_data.rake:39:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:39:in 'block (2 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.7ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 10], ["name", "Unit 201"], ["created_at", "2025-11-10 15:07:29.076049"], ["updated_at", "2025-11-10 15:07:29.076049"]]
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (8.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 24], ["term", "9 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.4ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 24], ["term", "9 months"], ["price", "1000.0"], ["created_at", "2025-11-10 15:07:29.087199"], ["updated_at", "2025-11-10 15:07:29.087199"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 24], ["term", "12 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.1ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 24], ["term", "12 months"], ["price", "950.0"], ["created_at", "2025-11-10 15:07:29.090154"], ["updated_at", "2025-11-10 15:07:29.090154"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 24], ["term", "24 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 24], ["term", "24 months"], ["price", "900.0"], ["created_at", "2025-11-10 15:07:29.092335"], ["updated_at", "2025-11-10 15:07:29.092335"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Create (0.7ms)[0m  [1m[32mINSERT INTO "units" ("property_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["property_id", 10], ["name", "Unit 202"], ["created_at", "2025-11-10 15:07:29.094337"], ["updated_at", "2025-11-10 15:07:29.094337"]]
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:54:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 25], ["term", "9 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 25], ["term", "9 months"], ["price", "1000.0"], ["created_at", "2025-11-10 15:07:29.097221"], ["updated_at", "2025-11-10 15:07:29.097221"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 25], ["term", "12 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.1ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 25], ["term", "12 months"], ["price", "950.0"], ["created_at", "2025-11-10 15:07:29.099312"], ["updated_at", "2025-11-10 15:07:29.099312"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1 AND "unit_monthly_prices"."term" = $2 LIMIT $3[0m  [["unit_id", 25], ["term", "24 months"], ["LIMIT", 1]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Create (0.2ms)[0m  [1m[32mINSERT INTO "unit_monthly_prices" ("unit_id", "term", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["unit_id", 25], ["term", "24 months"], ["price", "900.0"], ["created_at", "2025-11-10 15:07:29.101559"], ["updated_at", "2025-11-10 15:07:29.101559"]]
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fake_data.rake:60:in 'block (3 levels) in <top (required)>'
+  [1m[36mUnit Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "units" WHERE "units"."property_id" = $1[0m  [["property_id", 10]]
+  ↳ lib/tasks/fake_data.rake:67:in 'block (2 levels) in <top (required)>'
+  [1m[36mProperty Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "properties"[0m
+  ↳ lib/tasks/fake_data.rake:69:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnit Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "units"[0m
+  ↳ lib/tasks/fake_data.rake:70:in 'block (2 levels) in <top (required)>'
+  [1m[36mUnitMonthlyPrice Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "unit_monthly_prices"[0m
+  ↳ lib/tasks/fake_data.rake:71:in 'block (2 levels) in <top (required)>'
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRentalApplication Load (1.0ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[36mVerification Load (0.7ms)[0m  [1m[34mSELECT "verifications".* FROM "verifications" WHERE "verifications"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[36mPayment Load (2.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[36mLeaseTenant Load (1.8ms)[0m  [1m[34mSELECT "lease_tenants".* FROM "lease_tenants" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[36mUser Destroy (3.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRentalApplication Load (0.9ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mVerification Load (0.2ms)[0m  [1m[34mSELECT "verifications".* FROM "verifications" WHERE "verifications"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mLeaseTenant Load (0.1ms)[0m  [1m[34mSELECT "lease_tenants".* FROM "lease_tenants" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 8]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRentalApplication Load (1.0ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 9]]
+  [1m[36mVerification Load (0.1ms)[0m  [1m[34mSELECT "verifications".* FROM "verifications" WHERE "verifications"."user_id" = $1[0m  [["user_id", 9]]
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."user_id" = $1[0m  [["user_id", 9]]
+  [1m[36mLeaseTenant Load (0.2ms)[0m  [1m[34mSELECT "lease_tenants".* FROM "lease_tenants" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 9]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 9]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRentalApplication Load (0.9ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 10]]
+  [1m[36mVerification Load (0.2ms)[0m  [1m[34mSELECT "verifications".* FROM "verifications" WHERE "verifications"."user_id" = $1[0m  [["user_id", 10]]
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."user_id" = $1[0m  [["user_id", 10]]
+  [1m[36mLeaseTenant Load (0.2ms)[0m  [1m[34mSELECT "lease_tenants".* FROM "lease_tenants" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 10]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 10]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRentalApplication Load (8.9ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 11]]
+  [1m[36mVerification Load (0.2ms)[0m  [1m[34mSELECT "verifications".* FROM "verifications" WHERE "verifications"."user_id" = $1[0m  [["user_id", 11]]
+  [1m[36mPayment Load (0.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."user_id" = $1[0m  [["user_id", 11]]
+  [1m[36mLeaseTenant Load (0.3ms)[0m  [1m[34mSELECT "lease_tenants".* FROM "lease_tenants" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 11]]
+  [1m[36mUser Destroy (0.9ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 11]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRentalApplication Load (0.8ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 12]]
+  [1m[36mVerification Load (0.2ms)[0m  [1m[34mSELECT "verifications".* FROM "verifications" WHERE "verifications"."user_id" = $1[0m  [["user_id", 12]]
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."user_id" = $1[0m  [["user_id", 12]]
+  [1m[36mLeaseTenant Load (0.2ms)[0m  [1m[34mSELECT "lease_tenants".* FROM "lease_tenants" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 12]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 12]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRentalApplication Load (0.7ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 13]]
+  [1m[36mVerification Load (0.1ms)[0m  [1m[34mSELECT "verifications".* FROM "verifications" WHERE "verifications"."user_id" = $1[0m  [["user_id", 13]]
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."user_id" = $1[0m  [["user_id", 13]]
+  [1m[36mLeaseTenant Load (0.1ms)[0m  [1m[34mSELECT "lease_tenants".* FROM "lease_tenants" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 13]]
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 13]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRentalApplication Load (0.7ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 14]]
+  [1m[36mVerification Load (0.2ms)[0m  [1m[34mSELECT "verifications".* FROM "verifications" WHERE "verifications"."user_id" = $1[0m  [["user_id", 14]]
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."user_id" = $1[0m  [["user_id", 14]]
+  [1m[36mLeaseTenant Load (0.1ms)[0m  [1m[34mSELECT "lease_tenants".* FROM "lease_tenants" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 14]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 14]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "john@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "John Doe"], ["email", "john@example.com"], ["created_at", "2025-11-10 15:08:34.123874"], ["updated_at", "2025-11-10 15:08:34.123874"], ["password_digest", nil]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jane@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jane Smith"], ["email", "jane@example.com"], ["created_at", "2025-11-10 15:08:34.127269"], ["updated_at", "2025-11-10 15:08:34.127269"], ["password_digest", nil]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bob@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bob Johnson"], ["email", "bob@example.com"], ["created_at", "2025-11-10 15:08:34.136433"], ["updated_at", "2025-11-10 15:08:34.136433"], ["password_digest", nil]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started GET "/api/v1/auth/me" for 127.0.0.1 at 2025-11-10 15:08:43 +0000
+Processing by Api::V1::AuthController#me as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:45:in 'Api::V1::AuthController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 0.1ms | ActiveRecord: 1.7ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2025-11-10 15:08:53 +0000
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "stevenking86+1@gmail.com", "password" => "Passwrod123!", "auth" => {"email" => "stevenking86+1@gmail.com", "password" => "Passwrod123!"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86+1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2025-11-10 15:08:58 +0000
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "stevenking86+1@gmail.com", "password" => "Password123!", "auth" => {"email" => "stevenking86+1@gmail.com", "password" => "Password123!"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86+1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2025-11-10 15:10:20 +0000
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "stevenking86@gmail.com", "password" => "Password123!", "auth" => {"email" => "stevenking86@gmail.com", "password" => "Password123!"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2025-11-10 15:10:35 +0000
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user" => {"name" => "Ste", "email" => "stevenking86@gmail.com", "password" => "Password123!", "password_confirmation" => "Password123!"}}
+[31mUnpermitted parameters: :password, :password_confirmation. Context: { controller: Api::V1::UsersController, action: create, request: #<ActionDispatch::Request:0x00000001278655b0>, params: {"user" => {"name" => "Ste", "email" => "stevenking86@gmail.com", "password" => "Password123!", "password_confirmation" => "Password123!"}, "controller" => "api/v1/users", "action" => "create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Ste"], ["email", "stevenking86@gmail.com"], ["created_at", "2025-11-10 15:10:35.212990"], ["updated_at", "2025-11-10 15:10:35.212990"], ["password_digest", nil]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:19:in 'Api::V1::UsersController#create'
+Completed 201 Created in 7ms (Views: 0.1ms | ActiveRecord: 4.0ms (2 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-11-10 15:10:36 +0000
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-11-10 15:10:36 +0000
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 1.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (10.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 12ms (Views: 0.1ms | ActiveRecord: 15.2ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mProperty Count (11.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "properties"[0m
+  [1m[36mUnit Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "units"[0m
+  [1m[36mUnitMonthlyPrice Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "unit_monthly_prices"[0m
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+  [1m[36mUnit Count (3.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "units"."id") FROM "units" LEFT OUTER JOIN "leases" ON "leases"."unit_id" = "units"."id" WHERE (leases.id IS NULL OR leases.move_out_date <= $1)[0m  [[nil, "2025-11-10"]]
+  [1m[36mUnit Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "units".* FROM "units" LEFT OUTER JOIN "leases" ON "leases"."unit_id" = "units"."id" WHERE (leases.id IS NULL OR leases.move_out_date <= $1)[0m  [[nil, "2025-11-10"]]
+  [1m[36mProperty Load (0.6ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Property Load (0.0ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE Property Load (0.0ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE Property Load (0.0ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE Property Load (0.0ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Property Load (0.0ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE Property Load (0.0ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUnit Load (0.8ms)[0m  [1m[34mSELECT "units".* FROM "units" ORDER BY "units"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api/v1/units" for ::1 at 2025-11-10 15:12:14 +0000
+Processing by Api::V1::UnitsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/auth/login" for ::1 at 2025-11-10 15:12:25 +0000
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "john@example.com", "password" => "", "auth" => {"email" => "john@example.com", "password" => ""}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "john@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/units" for ::1 at 2025-11-10 15:12:29 +0000
+Processing by Api::V1::UnitsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+  [1m[36mUnit Load (1.6ms)[0m  [1m[34mSELECT DISTINCT "units".* FROM "units" LEFT OUTER JOIN "leases" ON "leases"."unit_id" = "units"."id" WHERE (leases.id IS NULL OR leases.move_out_date <= $1)[0m  [[nil, "2025-11-10"]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.6ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" IN ($1, $2, $3, $4)[0m  [["id", 8], ["id", 9], ["id", 7], ["id", 10]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 19], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.3ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 19], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 20], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 20], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 21], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 21], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 17], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.3ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 17], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 24], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 24], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 22], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 22], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 23], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 23], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 18], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 18], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 25], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 25], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 16], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 16], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+Completed 200 OK in 79ms (Views: 0.1ms | ActiveRecord: 18.6ms (23 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/api/v1/auth/me" for 127.0.0.1 at 2025-11-10 15:12:46 +0000
+Processing by Api::V1::AuthController#me as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:45:in 'Api::V1::AuthController#authenticate_user'
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2025-11-10 15:13:21 +0000
+Processing by Api::V1::AuthController#login as */*
+  Parameters: {"email" => "stevenking86@gmail.com", "password" => "password", "auth" => {"email" => "stevenking86@gmail.com", "password" => "password"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "stevenking86@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:5:in 'Api::V1::AuthController#login'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 4.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-11-10 15:13:22 +0000
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-11-10 15:13:22 +0000
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#authenticate_user'
+  [1m[36mUnit Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "units".* FROM "units" LEFT OUTER JOIN "leases" ON "leases"."unit_id" = "units"."id" WHERE (leases.id IS NULL OR leases.move_out_date <= $1)[0m  [[nil, "2025-11-10"]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mUnit Load (3.4ms)[0m  [1m[34mSELECT DISTINCT "units".* FROM "units" LEFT OUTER JOIN "leases" ON "leases"."unit_id" = "units"."id" WHERE (leases.id IS NULL OR leases.move_out_date <= $1)[0m  [[nil, "2025-11-10"]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.3ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" IN ($1, $2, $3, $4)[0m  [["id", 8], ["id", 9], ["id", 7], ["id", 10]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (2.4ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" IN ($1, $2, $3, $4)[0m  [["id", 8], ["id", 9], ["id", 7], ["id", 10]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 19], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 19], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 19], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 20], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (1.3ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 19], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 20], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 20], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 21], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.4ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 20], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 21], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 21], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 17], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.5ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 21], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 17], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 17], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 24], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.4ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 17], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Load (0.5ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 24], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 24], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 22], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.5ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 24], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 22], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 22], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 23], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.4ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 22], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 23], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 23], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 18], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 23], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Load (0.7ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 18], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 18], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 25], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 18], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 25], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 25], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 16], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.5ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 25], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 16], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+Completed 200 OK in 36ms (Views: 0.1ms | ActiveRecord: 24.0ms (23 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mLease Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 16], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 16], [nil, "2025-11-10"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+Completed 200 OK in 42ms (Views: 0.1ms | ActiveRecord: 23.2ms (23 queries, 0 cached) | GC: 0.0ms)
+
+

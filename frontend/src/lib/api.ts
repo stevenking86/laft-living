@@ -83,7 +83,8 @@ class ApiService {
   }
 
   async getCurrentUser(): Promise<User> {
-    return this.request<User>('/api/v1/auth/me');
+    const response = await this.request<{ user: User }>('/api/v1/auth/me');
+    return response.user;
   }
 
   async signup(name: string, email: string, password: string, passwordConfirmation: string): Promise<{ user: User; message: string }> {

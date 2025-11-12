@@ -15,7 +15,6 @@ import {
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: '',
     passwordConfirmation: '',
@@ -42,7 +41,6 @@ export default function SignUp() {
 
     try {
       await signup(
-        formData.name,
         formData.email,
         formData.password,
         formData.passwordConfirmation
@@ -93,37 +91,6 @@ export default function SignUp() {
 
           <form onSubmit={handleSubmit}>
             <Stack spacing={3}>
-              <TextField
-                name="name"
-                label="Name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                fullWidth
-                variant="outlined"
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    color: '#FFFFFF',
-                    '& fieldset': {
-                      borderColor: '#478559',
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#3d734c',
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: '#478559',
-                    },
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: '#D3D3D3',
-                    '&.Mui-focused': {
-                      color: '#478559',
-                    },
-                  },
-                }}
-              />
-
               <TextField
                 name="email"
                 label="Email"

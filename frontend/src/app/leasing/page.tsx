@@ -305,6 +305,7 @@ export default function Leasing() {
                       <Button
                         variant="contained"
                         fullWidth
+                        onClick={() => router.push(`/leasing/apply/${unit.id}`)}
                         sx={{
                           backgroundColor: '#f95d9b',
                           color: '#FFFFFF',

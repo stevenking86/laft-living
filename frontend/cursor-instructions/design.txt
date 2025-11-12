@@ -1,6 +1,8 @@
 Use the following colors for our color scheme for our website.  White text looks good on top of the
 purple baseline.  So does the gray. 
 
+Always reach for material ui components before building something new. 
+
 Green Treeline: #478559
 Purple baseline: #161748
 Pink highlight: #f95d9b

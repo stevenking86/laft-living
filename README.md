@@ -98,6 +98,16 @@ The Rails API provides the following endpoints:
 - `PUT /api/v1/users/:id` - Update a user
 - `DELETE /api/v1/users/:id` - Delete a user
 
+### Rental Applications
+- `POST /api/v1/rental_applications` - Create a new rental application
+- `GET /api/v1/rental_applications/:id` - Get a specific rental application
+
+### Verifications
+- `POST /api/v1/rental_applications/:rental_application_id/verifications` - Upload ID image for verification
+- `GET /api/v1/rental_applications/:rental_application_id/verifications/show_by_application` - Get verification status
+- `GET /api/v1/rental_applications/:rental_application_id/verifications/:id` - Get specific verification
+- `POST /api/v1/rental_applications/:rental_application_id/verifications/:id/verify` - Manually trigger verification
+
 
 ## Development
 
@@ -153,12 +163,38 @@ rails db:seed
 **Backend (.env):**
 ```bash
 DATABASE_URL=postgresql://username:password@localhost/laft_development
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 **Frontend (.env.local):**
 ```bash
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
+
+#### Getting an OpenAI API Key
+
+The application uses OpenAI's Vision API for ID verification. To set this up:
+
+1. **Sign up for OpenAI:**
+   - Go to [https://platform.openai.com](https://platform.openai.com)
+   - Create an account or sign in
+
+2. **Create an API Key:**
+   - Navigate to [API Keys](https://platform.openai.com/api-keys)
+   - Click "Create new secret key"
+   - Copy the key (you won't be able to see it again)
+
+3. **Add to Backend:**
+   - Create a `.env` file in the `backend/` directory (if it doesn't exist)
+   - Add: `OPENAI_API_KEY=sk-your-key-here`
+   - **Important:** Never commit this file to version control!
+
+4. **Alternative: Use Environment Variables:**
+   ```bash
+   export OPENAI_API_KEY=sk-your-key-here
+   ```
+
+**Note:** The ID verification feature requires the `gpt-4o` model, which has usage costs. Check [OpenAI's pricing](https://openai.com/pricing) for current rates.
 
 ### CORS Configuration
 
@@ -192,6 +228,32 @@ The Rails API is configured to allow requests from `http://localhost:3000`. To c
 - Check the Rails logs: `tail -f log/development.log`
 - Check the Next.js logs in the terminal where you ran `npm run dev`
 - Verify both servers are running on the correct ports
+
+## Features
+
+### ID Verification
+
+The application includes AI-powered ID verification:
+
+1. **User Flow:**
+   - After submitting a rental application, users are redirected to upload their ID
+   - Users upload a photo of their government-issued ID (driver's license, passport, etc.)
+   - The AI service analyzes the ID to:
+     - Extract the name from the ID
+     - Verify if it appears to be a valid ID
+     - Compare the name on the ID with the name on the application
+   - Users receive immediate feedback on verification status
+
+2. **Technical Details:**
+   - Uses OpenAI's GPT-4 Vision API for image analysis
+   - Images are stored using Rails Active Storage
+   - Verification results are stored in the database
+   - Frontend polls for verification status updates
+
+3. **Verification Status:**
+   - `pending` - Verification in progress
+   - `verified` - ID is valid and name matches
+   - `failed` - ID could not be verified or name doesn't match
 
 ## Next Steps
 

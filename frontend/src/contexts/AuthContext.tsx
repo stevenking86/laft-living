@@ -5,7 +5,6 @@ import { apiService } from '@/lib/api';
 
 interface User {
   id: number;
-  name: string;
   email: string;
 }
 
@@ -13,7 +12,7 @@ interface AuthContextType {
   user: User | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  signup: (name: string, email: string, password: string, passwordConfirmation: string) => Promise<void>;
+  signup: (email: string, password: string, passwordConfirmation: string) => Promise<void>;
   logout: () => Promise<void>;
   checkAuth: () => Promise<void>;
 }
@@ -56,9 +55,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const signup = async (name: string, email: string, password: string, passwordConfirmation: string) => {
+  const signup = async (email: string, password: string, passwordConfirmation: string) => {
     try {
-      const response = await apiService.signup(name, email, password, passwordConfirmation);
+      const response = await apiService.signup(email, password, passwordConfirmation);
       setUser(response.user);
     } catch (error) {
       throw error;

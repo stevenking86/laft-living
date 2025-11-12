@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  include ActiveStorage::SetCurrent
+  
   # API controllers don't need CSRF protection
   # protect_from_forgery is not available in ActionController::API
   

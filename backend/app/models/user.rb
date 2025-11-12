@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :lease_tenants, dependent: :destroy
   has_many :leases, through: :lease_tenants
   
-  validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   # validates :password, presence: true, length: { minimum: 6 }, on: :create
   # validates :password_confirmation, presence: true, on: :create

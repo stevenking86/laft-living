@@ -6,9 +6,9 @@ User.destroy_all
 
 # Create sample users
 User.create!([
-  { name: "John Doe", email: "john@example.com" },
-  { name: "Jane Smith", email: "jane@example.com" },
-  { name: "Bob Johnson", email: "bob@example.com" }
+  { email: "john@example.com" },
+  { email: "jane@example.com" },
+  { email: "bob@example.com" }
 ])
 
 puts "Seeded #{User.count} users"

@@ -8,6 +8,16 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :show, :create, :update, :destroy]
       resources :units, only: [:index, :show]
+      resources :rental_applications, only: [:create, :show] do
+        resources :verifications, only: [:create, :show] do
+          collection do
+            get :show_by_application
+          end
+          member do
+            post :verify
+          end
+        end
+      end
       
       # Authentication routes
       post 'auth/login', to: 'auth#login'

@@ -23,7 +23,6 @@ class Api::V1::UsersController < ApplicationController
         message: 'User created successfully',
         user: {
           id: @user.id,
-          name: @user.name,
           email: @user.email
         }
       }, status: :created
@@ -54,6 +53,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:email)
   end
 end

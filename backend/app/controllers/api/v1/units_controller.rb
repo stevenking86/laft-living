@@ -7,7 +7,7 @@ class Api::V1::UnitsController < ApplicationController
   end
 
   def show
-    @unit = Unit.find(params[:id])
+    @unit = Unit.includes(:property, :unit_monthly_prices).find(params[:id])
     render json: unit_json(@unit)
   end
 
@@ -31,7 +31,12 @@ class Api::V1::UnitsController < ApplicationController
         move_in_date: unit.current_lease.move_in_date,
         move_out_date: unit.current_lease.move_out_date,
         signed: unit.current_lease.signed
-      } : nil
+      } : nil,
+      unit_monthly_prices: unit.unit_monthly_prices.map { |ump| {
+        id: ump.id,
+        term: ump.term,
+        price: ump.price.to_f
+      }}
     }
   end
 end

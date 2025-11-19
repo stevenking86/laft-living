@@ -109,6 +109,10 @@ class ApiService {
   }
 
   // Rental Applications endpoints
+  async getRentalApplications(): Promise<any[]> {
+    return this.request<any[]>('/api/v1/rental_applications');
+  }
+
   async createRentalApplication(application: {
     property_id: number;
     unit_id: number;
@@ -166,6 +170,18 @@ class ApiService {
         method: 'POST',
       }
     );
+  }
+
+  // Leases endpoints
+  async getLeases(): Promise<any[]> {
+    return this.request<any[]>('/api/v1/leases');
+  }
+
+  async createLease(rentalApplicationId: number): Promise<any> {
+    return this.request<any>('/api/v1/leases', {
+      method: 'POST',
+      body: JSON.stringify({ rental_application_id: rentalApplicationId }),
+    });
   }
 
 }

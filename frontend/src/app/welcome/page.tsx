@@ -1,19 +1,77 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { Button, Typography, Stack, Card, CardContent, CardActionArea, Box } from '@mui/material';
+import { apiService } from '@/lib/api';
+import { Button, Typography, Stack, Card, CardContent, CardActionArea, Box, Alert } from '@mui/material';
+
+interface RentalApplication {
+  id: number;
+  status: string;
+  move_in_date: string;
+  has_lease: boolean;
+  property: {
+    id: number;
+    name: string;
+    address: string;
+  };
+  unit: {
+    id: number;
+    name: string;
+  };
+}
 
 export default function Welcome() {
   const { user, logout, loading } = useAuth();
   const router = useRouter();
+  const [relevantApplications, setRelevantApplications] = useState<RentalApplication[]>([]);
+  const [applicationsLoading, setApplicationsLoading] = useState(true);
 
   useEffect(() => {
     if (!loading && !user) {
       router.push('/');
     }
   }, [user, loading, router]);
+
+  useEffect(() => {
+    const fetchApplications = async () => {
+      if (!user) return;
+      
+      try {
+        setApplicationsLoading(true);
+        const applications = await apiService.getRentalApplications();
+        
+        // Filter for applications that are:
+        // 1. pending, OR
+        // 2. approved but move_in_date is in the future (hasn't moved in yet)
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const relevant = applications.filter((app: RentalApplication) => {
+          if (app.status === 'pending') {
+            return true;
+          }
+          if (app.status === 'approved') {
+            const moveInDate = new Date(app.move_in_date);
+            moveInDate.setHours(0, 0, 0, 0);
+            return moveInDate > today;
+          }
+          return false;
+        });
+        
+        setRelevantApplications(relevant);
+      } catch (error) {
+        console.error('Error fetching rental applications:', error);
+      } finally {
+        setApplicationsLoading(false);
+      }
+    };
+
+    if (user) {
+      fetchApplications();
+    }
+  }, [user]);
 
   const handleSignOut = async () => {
     try {
@@ -28,6 +86,14 @@ export default function Welcome() {
 
   const handleLeaseClick = () => {
     router.push('/leasing');
+  };
+
+  const handleLiveClick = () => {
+    router.push('/live');
+  };
+
+  const handleSignLease = (applicationId: number) => {
+    router.push(`/leases/sign/${applicationId}`);
   };
 
   if (loading) {
@@ -75,6 +141,62 @@ export default function Welcome() {
         >
           What do you want to do?
         </Typography>
+
+        {/* Application Status Section */}
+        {!applicationsLoading && relevantApplications.length > 0 && (
+          <Box sx={{ mb: 4, maxWidth: 800, mx: 'auto' }}>
+            <Stack spacing={2}>
+              {relevantApplications.map((application) => (
+                <Alert
+                  key={application.id}
+                  severity={application.status === 'pending' ? 'info' : 'success'}
+                  sx={{
+                    backgroundColor: application.status === 'pending' 
+                      ? 'rgba(57, 160, 202, 0.2)' 
+                      : 'rgba(71, 133, 89, 0.2)',
+                    color: '#FFFFFF',
+                    border: `1px solid ${application.status === 'pending' ? '#39a0ca' : '#478559'}`,
+                    borderRadius: 2,
+                    '& .MuiAlert-icon': {
+                      color: application.status === 'pending' ? '#39a0ca' : '#478559',
+                    },
+                  }}
+                >
+                  <Stack spacing={2}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontFamily: 'var(--font-lora), serif',
+                        fontSize: '1.1rem',
+                      }}
+                    >
+                      {application.status === 'pending' 
+                        ? `Your application for ${application.property.name} ${application.unit.name} is pending. Check here for updates.`
+                        : `You've been approved for ${application.unit.name} at ${application.property.name}. Visit your living section to get started in your new home.`}
+                    </Typography>
+                    {application.status === 'approved' && !application.has_lease && (
+                      <Button
+                        variant="contained"
+                        onClick={() => handleSignLease(application.id)}
+                        sx={{
+                          backgroundColor: '#478559',
+                          color: '#FFFFFF',
+                          fontFamily: 'var(--font-lora), serif',
+                          '&:hover': {
+                            backgroundColor: '#3a6d47',
+                          },
+                          alignSelf: 'flex-start',
+                        }}
+                      >
+                        Sign Lease
+                      </Button>
+                    )}
+                  </Stack>
+                </Alert>
+              ))}
+            </Stack>
+          </Box>
+        )}
         
         {/* Three large card-style buttons */}
         <Stack 
@@ -155,6 +277,7 @@ export default function Welcome() {
             }}
           >
             <CardActionArea 
+              onClick={handleLiveClick}
               sx={{ 
                 height: '100%',
                 p: 3,

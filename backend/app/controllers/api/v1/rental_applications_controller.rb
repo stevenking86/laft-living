@@ -1,6 +1,11 @@
 class Api::V1::RentalApplicationsController < ApplicationController
   before_action :authenticate_user
 
+  def index
+    @rental_applications = @current_user.rental_applications.includes(:property, :unit, :lease)
+    render json: @rental_applications.map { |app| rental_application_json(app) }
+  end
+
   def create
     @rental_application = RentalApplication.new(rental_application_params)
     @rental_application.user = @current_user
@@ -46,7 +51,18 @@ class Api::V1::RentalApplicationsController < ApplicationController
       gender: application.gender,
       status: application.status,
       created_at: application.created_at,
-      updated_at: application.updated_at
+      updated_at: application.updated_at,
+      has_lease: application.lease.present?,
+      property: {
+        id: application.property.id,
+        name: application.property.name,
+        address: application.property.address,
+        office_hours: application.property.office_hours
+      },
+      unit: {
+        id: application.unit.id,
+        name: application.unit.name
+      }
     }
   end
 end

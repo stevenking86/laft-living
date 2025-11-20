@@ -184,6 +184,40 @@ class ApiService {
     });
   }
 
+  // Payment endpoints
+  async getOutstandingPayments(): Promise<{
+    outstanding_payments: any[];
+    total_amount: number;
+    has_overdue: boolean;
+    overdue_payments: any[];
+  }> {
+    return this.request('/api/v1/payments/outstanding');
+  }
+
+  async getLastPayment(): Promise<{ last_paid_date: string | null }> {
+    return this.request('/api/v1/payments/last_paid');
+  }
+
+  async createPaymentIntent(): Promise<{
+    session_id: string;
+    url: string;
+    amount: number;
+  }> {
+    return this.request('/api/v1/payments/create_intent', {
+      method: 'POST',
+    });
+  }
+
+  async confirmPayment(sessionId: string): Promise<{
+    message: string;
+    payments: any[];
+  }> {
+    return this.request('/api/v1/payments/confirm', {
+      method: 'POST',
+      body: JSON.stringify({ session_id: sessionId }),
+    });
+  }
+
 }
 
 export const apiService = new ApiService(API_BASE_URL);

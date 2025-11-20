@@ -12,6 +12,11 @@ class Lease < ApplicationRecord
   validates :move_in_date, presence: true
   validate :move_out_date_after_move_in_date
 
+  # Get monthly rent amount from the rental application's unit monthly price
+  def monthly_rent
+    rental_application&.unit_monthly_price&.price
+  end
+
   private
 
   def move_out_date_after_move_in_date

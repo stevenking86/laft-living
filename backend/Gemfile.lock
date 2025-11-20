@@ -219,6 +219,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     stringio (3.1.7)
+    stripe (18.0.0)
     thor (1.4.0)
     timeout (0.4.3)
     tsort (0.2.0)
@@ -256,6 +257,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 8.0.0)
   sprockets-rails
+  stripe
   tzinfo-data
 
 RUBY VERSION

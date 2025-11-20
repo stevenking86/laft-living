@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_12_163404) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_19_202501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -77,8 +77,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_12_163404) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "payment_month"
+    t.string "stripe_payment_intent_id"
+    t.string "stripe_charge_id"
     t.index ["due_date"], name: "index_payments_on_due_date"
     t.index ["lease_id"], name: "index_payments_on_lease_id"
+    t.index ["payment_month"], name: "index_payments_on_payment_month"
     t.index ["status"], name: "index_payments_on_status"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end

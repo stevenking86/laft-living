@@ -24,6 +24,12 @@ Rails.application.routes.draw do
       post 'auth/login', to: 'auth#login'
       post 'auth/logout', to: 'auth#logout'
       get 'auth/me', to: 'auth#me'
+      
+      # Payment routes
+      get 'payments/outstanding', to: 'payments#outstanding'
+      get 'payments/last_paid', to: 'payments#last_paid'
+      post 'payments/create_intent', to: 'payments#create_intent'
+      post 'payments/confirm', to: 'payments#confirm'
     end
   end
 end

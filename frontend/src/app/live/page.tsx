@@ -37,12 +37,31 @@ interface Lease {
   };
 }
 
+interface OutstandingPayment {
+  id: number;
+  amount: number;
+  payment_month: string;
+  due_date: string;
+  status: string;
+  paid_date: string | null;
+  overdue: boolean;
+}
+
+interface OutstandingPaymentsResponse {
+  outstanding_payments: OutstandingPayment[];
+  total_amount: number;
+  has_overdue: boolean;
+  overdue_payments: OutstandingPayment[];
+}
+
 export default function Live() {
   const { user, loading } = useAuth();
   const router = useRouter();
   const [leases, setLeases] = useState<Lease[]>([]);
   const [leasesLoading, setLeasesLoading] = useState(true);
   const [activeLease, setActiveLease] = useState<Lease | null>(null);
+  const [paymentsData, setPaymentsData] = useState<OutstandingPaymentsResponse | null>(null);
+  const [paymentsLoading, setPaymentsLoading] = useState(false);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -105,6 +124,26 @@ export default function Live() {
     }
   }, [user]);
 
+  // Fetch payment data when active lease is available
+  useEffect(() => {
+    const fetchPayments = async () => {
+      if (!activeLease || !user) return;
+
+      try {
+        setPaymentsLoading(true);
+        const data = await apiService.getOutstandingPayments();
+        setPaymentsData(data);
+      } catch (error) {
+        console.error('Error fetching payments:', error);
+        // Don't show error to user, just log it
+      } finally {
+        setPaymentsLoading(false);
+      }
+    };
+
+    fetchPayments();
+  }, [activeLease, user]);
+
   const handleBack = () => {
     router.push('/welcome');
   };
@@ -114,8 +153,12 @@ export default function Live() {
   };
 
   const handlePayRent = () => {
-    // TODO: Implement pay rent functionality
-    console.log('Pay rent clicked');
+    router.push('/live/pay-rent');
+  };
+
+  const formatMonth = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
   };
 
   const handleMaintenanceRequest = () => {
@@ -239,6 +282,39 @@ export default function Live() {
             >
               Welcome to {activeLease.property.name}
             </Typography>
+
+            {/* Overdue Payment Warning */}
+            {paymentsData && paymentsData.has_overdue && paymentsData.overdue_payments.length > 0 && (
+              <Alert
+                severity="warning"
+                sx={{
+                  backgroundColor: 'rgba(255, 152, 0, 0.2)',
+                  color: '#FFFFFF',
+                  border: '1px solid #ff9800',
+                  borderRadius: 2,
+                  mb: 4,
+                  '& .MuiAlert-icon': {
+                    color: '#ff9800',
+                  },
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontFamily: 'var(--font-lora), serif',
+                    fontSize: '1.1rem',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  {paymentsData.overdue_payments.map((payment, index) => (
+                    <span key={payment.id}>
+                      Rent is overdue for {formatMonth(payment.payment_month)}
+                      {index < paymentsData.overdue_payments.length - 1 && ', '}
+                    </span>
+                  ))}
+                </Typography>
+              </Alert>
+            )}
 
             <Card
               sx={{

@@ -19,19 +19,26 @@ import {
 interface OutstandingPayment {
   id: number;
   amount: number;
+  original_amount?: number;
   payment_month: string;
   due_date: string;
   status: string;
   paid_date: string | null;
   overdue: boolean;
   stripe_payment_intent_id: string | null;
+  discount_applied?: boolean;
+  discount_amount?: number;
 }
 
 interface OutstandingPaymentsResponse {
   outstanding_payments: OutstandingPayment[];
   total_amount: number;
+  original_total_amount?: number;
   has_overdue: boolean;
   overdue_payments: OutstandingPayment[];
+  current_tier?: string;
+  discount_percentage?: number;
+  discount_applied?: boolean;
 }
 
 export default function PayRent() {
@@ -273,16 +280,90 @@ export default function PayRent() {
                   >
                     Amount Owed
                   </Typography>
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      color: '#FFFFFF',
-                      fontFamily: 'var(--font-lora), serif',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    ${paymentsData.total_amount.toFixed(2)}
-                  </Typography>
+                  <Stack direction="row" spacing={2} alignItems="baseline">
+                    {paymentsData.discount_applied && paymentsData.original_total_amount ? (
+                      <>
+                        <Typography
+                          variant="h4"
+                          sx={{
+                            color: '#FFFFFF',
+                            fontFamily: 'var(--font-lora), serif',
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          ${paymentsData.total_amount.toFixed(2)}
+                        </Typography>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            color: '#D3D3D3',
+                            fontFamily: 'var(--font-lora), serif',
+                            textDecoration: 'line-through',
+                          }}
+                        >
+                          ${paymentsData.original_total_amount.toFixed(2)}
+                        </Typography>
+                      </>
+                    ) : (
+                      <Typography
+                        variant="h4"
+                        sx={{
+                          color: '#FFFFFF',
+                          fontFamily: 'var(--font-lora), serif',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        ${paymentsData.total_amount.toFixed(2)}
+                      </Typography>
+                    )}
+                  </Stack>
+                  {paymentsData.discount_applied && paymentsData.current_tier && paymentsData.discount_percentage !== undefined && (
+                    <Box
+                      sx={{
+                        mt: 2,
+                        p: 2,
+                        backgroundColor: 'rgba(71, 133, 89, 0.2)',
+                        borderRadius: 2,
+                        border: '1px solid #478559',
+                      }}
+                    >
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color: '#478559',
+                          fontFamily: 'var(--font-lora), serif',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        {paymentsData.current_tier.charAt(0).toUpperCase() + paymentsData.current_tier.slice(1)} Tier: {paymentsData.discount_percentage}% discount applied
+                      </Typography>
+                      {paymentsData.original_total_amount && (
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: '#FFFFFF',
+                            fontFamily: 'var(--font-lora), serif',
+                            mt: 0.5,
+                          }}
+                        >
+                          You're saving ${(paymentsData.original_total_amount - paymentsData.total_amount).toFixed(2)}!
+                        </Typography>
+                      )}
+                    </Box>
+                  )}
+                  {!paymentsData.discount_applied && paymentsData.current_tier && (
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: '#D3D3D3',
+                        fontFamily: 'var(--font-lora), serif',
+                        mt: 1,
+                        textTransform: 'capitalize',
+                      }}
+                    >
+                      Current Tier: {paymentsData.current_tier}
+                    </Typography>
+                  )}
                 </Box>
 
                 <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.2)' }} />
@@ -314,28 +395,41 @@ export default function PayRent() {
                             : '1px solid rgba(255, 255, 255, 0.1)',
                         }}
                       >
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            color: '#FFFFFF',
-                            fontFamily: 'var(--font-lora), serif',
-                            fontSize: '1.1rem',
-                          }}
-                        >
-                          {formatMonth(payment.payment_month)} - ${payment.amount.toFixed(2)}
+                        <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
+                          <Typography
+                            variant="body1"
+                            sx={{
+                              color: '#FFFFFF',
+                              fontFamily: 'var(--font-lora), serif',
+                              fontSize: '1.1rem',
+                            }}
+                          >
+                            {formatMonth(payment.payment_month)} - ${payment.amount.toFixed(2)}
+                          </Typography>
+                          {payment.discount_applied && payment.original_amount && (
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                color: '#D3D3D3',
+                                fontFamily: 'var(--font-lora), serif',
+                                textDecoration: 'line-through',
+                              }}
+                            >
+                              ${payment.original_amount.toFixed(2)}
+                            </Typography>
+                          )}
                           {payment.overdue && (
                             <Typography
                               component="span"
                               sx={{
                                 color: '#f44336',
-                                ml: 1,
                                 fontWeight: 'bold',
                               }}
                             >
                               (Overdue)
                             </Typography>
                           )}
-                        </Typography>
+                        </Stack>
                       </Box>
                     ))}
                   </Stack>

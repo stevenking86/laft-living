@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_19_202501) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_21_210146) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -66,6 +66,32 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_202501) do
     t.index ["property_id"], name: "index_leases_on_property_id"
     t.index ["rental_application_id"], name: "index_leases_on_rental_application_id"
     t.index ["unit_id"], name: "index_leases_on_unit_id"
+  end
+
+  create_table "maintenance_requests", force: :cascade do |t|
+    t.string "ticket_number", null: false
+    t.bigint "user_id", null: false
+    t.bigint "property_id", null: false
+    t.bigint "unit_id"
+    t.string "category", null: false
+    t.text "description", null: false
+    t.text "preferred_entry_time"
+    t.boolean "resident_must_be_home", default: false, null: false
+    t.string "urgency_level", null: false
+    t.string "status", default: "Submitted", null: false
+    t.bigint "assigned_maintenance_user_id"
+    t.text "admin_notes"
+    t.text "resident_visible_notes"
+    t.text "resolution_notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assigned_maintenance_user_id"], name: "index_maintenance_requests_on_assigned_maintenance_user_id"
+    t.index ["property_id"], name: "index_maintenance_requests_on_property_id"
+    t.index ["status"], name: "index_maintenance_requests_on_status"
+    t.index ["ticket_number"], name: "index_maintenance_requests_on_ticket_number", unique: true
+    t.index ["unit_id"], name: "index_maintenance_requests_on_unit_id"
+    t.index ["urgency_level"], name: "index_maintenance_requests_on_urgency_level"
+    t.index ["user_id"], name: "index_maintenance_requests_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -136,11 +162,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_202501) do
     t.index ["property_id"], name: "index_units_on_property_id"
   end
 
+  create_table "user_properties", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "property_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "loyalty_tier", default: 0, null: false
+    t.index ["property_id"], name: "index_user_properties_on_property_id"
+    t.index ["user_id", "property_id"], name: "index_user_properties_on_user_id_and_property_id", unique: true
+    t.index ["user_id"], name: "index_user_properties_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
@@ -168,6 +206,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_202501) do
   add_foreign_key "leases", "properties"
   add_foreign_key "leases", "rental_applications"
   add_foreign_key "leases", "units"
+  add_foreign_key "maintenance_requests", "properties"
+  add_foreign_key "maintenance_requests", "units"
+  add_foreign_key "maintenance_requests", "users"
+  add_foreign_key "maintenance_requests", "users", column: "assigned_maintenance_user_id"
   add_foreign_key "payments", "leases"
   add_foreign_key "payments", "users"
   add_foreign_key "rental_applications", "properties"
@@ -176,6 +218,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_202501) do
   add_foreign_key "rental_applications", "users"
   add_foreign_key "unit_monthly_prices", "units"
   add_foreign_key "units", "properties"
+  add_foreign_key "user_properties", "properties"
+  add_foreign_key "user_properties", "users"
   add_foreign_key "verifications", "rental_applications"
   add_foreign_key "verifications", "users"
 end

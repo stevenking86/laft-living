@@ -11,10 +11,14 @@ class Api::V1::PaymentsController < ApplicationController
     outstanding_payments.each { |payment| payment.save if payment.new_record? }
     
     render json: {
-      outstanding_payments: outstanding_payments.map { |p| payment_json(p) },
+      outstanding_payments: outstanding_payments.map { |p| payment_json(p, service) },
       total_amount: service.total_amount_owed.to_f,
+      original_total_amount: service.original_total_amount.to_f,
       has_overdue: service.has_overdue?,
-      overdue_payments: service.overdue_payments.map { |p| payment_json(p) }
+      overdue_payments: service.overdue_payments.map { |p| payment_json(p, service) },
+      current_tier: service.current_tier.to_s,
+      discount_percentage: service.discount_percentage,
+      discount_applied: service.discount_applied?
     }
   end
 
@@ -121,9 +125,13 @@ class Api::V1::PaymentsController < ApplicationController
           payment.save
         end
 
+        # Recalculate loyalty tier after payment
+        loyalty_service = LoyaltyTierService.new(@current_user, @active_lease.property)
+        loyalty_service.update_tier
+
         render json: {
           message: 'Payment confirmed successfully',
-          payments: payments.map { |p| payment_json(p) }
+          payments: payments.map { |p| payment_json(p, nil) }
         }
       else
         render json: { error: "Payment not succeeded. Status: #{session.payment_status}" }, status: :unprocessable_entity
@@ -150,10 +158,14 @@ class Api::V1::PaymentsController < ApplicationController
     end
   end
 
-  def payment_json(payment)
-    {
+  def payment_json(payment, service = nil)
+    chargeable = service ? service.chargeable_amount(payment) : payment.amount.to_f
+    original = payment.amount.to_f
+    
+    result = {
       id: payment.id,
-      amount: payment.amount.to_f,
+      amount: chargeable,
+      original_amount: original,
       payment_month: payment.payment_month,
       due_date: payment.due_date,
       status: payment.status,
@@ -161,6 +173,14 @@ class Api::V1::PaymentsController < ApplicationController
       overdue: payment.overdue?,
       stripe_payment_intent_id: payment.stripe_payment_intent_id
     }
+    
+    # Add discount info if service is provided and discount applies
+    if service && service.discount_applied?
+      result[:discount_applied] = true
+      result[:discount_amount] = (original - chargeable).round(2)
+    end
+    
+    result
   end
 end
 

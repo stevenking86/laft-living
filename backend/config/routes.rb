@@ -30,6 +30,20 @@ Rails.application.routes.draw do
       get 'payments/last_paid', to: 'payments#last_paid'
       post 'payments/create_intent', to: 'payments#create_intent'
       post 'payments/confirm', to: 'payments#confirm'
+      
+      # Maintenance request routes
+      resources :maintenance_requests, only: [:index, :show, :create, :update] do
+        collection do
+          get :maintenance_users
+        end
+        member do
+          post :add_photos
+          patch :update_resolution
+        end
+      end
+      
+      # Loyalty routes
+      resources :loyalty, only: [:index]
     end
   end
 end

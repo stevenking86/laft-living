@@ -31,4 +31,21 @@ class Payment < ApplicationRecord
       false
     end
   end
+
+  # Check if payment was paid on time (paid_date is on or before the 10th of the payment month)
+  def on_time?
+    return false unless paid? && paid_date.present? && payment_month.present?
+    
+    # Payment is on time if paid_date is on or before the 10th of the payment month
+    payment_deadline = Date.new(payment_month.year, payment_month.month, 10)
+    paid_date <= payment_deadline
+  end
+
+  # Check if payment is unpaid and late (status is late or pending AND payment is overdue)
+  def unpaid_late?
+    return false if paid?
+    return false unless payment_month.present?
+    
+    (late? || pending?) && overdue?
+  end
 end

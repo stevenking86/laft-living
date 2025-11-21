@@ -20,7 +20,7 @@ export default function SignIn() {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, isResident, isPropertyAdmin, isMaintenance, isSuperAdmin } = useAuth();
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,8 +39,19 @@ export default function SignIn() {
     setError('');
 
     try {
-      await login(formData.email, formData.password);
-      router.push('/welcome');
+      const response = await login(formData.email, formData.password);
+      // Redirect based on role from the login response
+      const role = response.user?.role;
+      if (role === 'super_admin') {
+        router.push('/admin/super');
+      } else if (role === 'property_admin') {
+        router.push('/admin/property');
+      } else if (role === 'maintenance') {
+        router.push('/admin/maintenance');
+      } else {
+        // Resident or default
+        router.push('/welcome');
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred during sign in');
     } finally {

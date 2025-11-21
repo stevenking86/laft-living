@@ -23,7 +23,7 @@ interface RentalApplication {
 }
 
 export default function Welcome() {
-  const { user, logout, loading } = useAuth();
+  const { user, logout, loading, isResident, isPropertyAdmin, isMaintenance, isSuperAdmin } = useAuth();
   const router = useRouter();
   const [relevantApplications, setRelevantApplications] = useState<RentalApplication[]>([]);
   const [applicationsLoading, setApplicationsLoading] = useState(true);
@@ -31,8 +31,17 @@ export default function Welcome() {
   useEffect(() => {
     if (!loading && !user) {
       router.push('/');
+    } else if (!loading && user) {
+      // Redirect non-residents to their appropriate dashboards
+      if (isSuperAdmin()) {
+        router.push('/admin/super');
+      } else if (isPropertyAdmin()) {
+        router.push('/admin/property');
+      } else if (isMaintenance()) {
+        router.push('/admin/maintenance');
+      }
     }
-  }, [user, loading, router]);
+  }, [user, loading, isResident, isPropertyAdmin, isMaintenance, isSuperAdmin, router]);
 
   useEffect(() => {
     const fetchApplications = async () => {
@@ -86,6 +95,10 @@ export default function Welcome() {
 
   const handleLeaseClick = () => {
     router.push('/leasing');
+  };
+
+  const handleRewardsClick = () => {
+    router.push('/rewards');
   };
 
   const handleLiveClick = () => {
@@ -330,6 +343,7 @@ export default function Welcome() {
             }}
           >
             <CardActionArea 
+              onClick={handleRewardsClick}
               sx={{ 
                 height: '100%',
                 p: 3,

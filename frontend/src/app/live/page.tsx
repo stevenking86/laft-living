@@ -162,8 +162,7 @@ export default function Live() {
   };
 
   const handleMaintenanceRequest = () => {
-    // TODO: Implement maintenance request functionality
-    console.log('Maintenance request clicked');
+    router.push('/live/maintenance-request');
   };
 
   if (loading || leasesLoading) {

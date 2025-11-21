@@ -3,6 +3,8 @@ class PaymentCalculationService
     @lease = lease
     @user = user
     @monthly_rent = lease.monthly_rent
+    @property = lease.property
+    @loyalty_service = LoyaltyTierService.new(@user, @property)
   end
 
   # Calculate and return outstanding payments for the lease
@@ -25,6 +27,10 @@ class PaymentCalculationService
 
     # Only check months if first payment month has been reached or passed
     return [] if first_payment_month > last_month_to_check
+
+    # Get current tier and discount percentage
+    current_tier = @loyalty_service.current_tier
+    discount_percentage = @loyalty_service.discount_percentage
 
     # Iterate through each month from first payment month to last month to check
     current_month = first_payment_month
@@ -56,8 +62,21 @@ class PaymentCalculationService
     outstanding
   end
 
-  # Calculate total amount owed
+  # Get chargeable amount for a payment (with discount applied if applicable)
+  def chargeable_amount(payment)
+    return payment.amount if discount_percentage == 0
+    
+    # Apply discount to the payment amount
+    (payment.amount * (1 - discount_percentage / 100.0)).round(2)
+  end
+
+  # Calculate total amount owed (with discounts applied)
   def total_amount_owed
+    outstanding_payments.sum { |p| chargeable_amount(p) }
+  end
+
+  # Get original total amount before discounts
+  def original_total_amount
     outstanding_payments.sum(&:amount)
   end
 
@@ -75,6 +94,21 @@ class PaymentCalculationService
   def last_paid_date
     last_payment = @lease.payments.paid.order(payment_month: :desc).first
     last_payment&.paid_date
+  end
+
+  # Get current loyalty tier
+  def current_tier
+    @loyalty_service.current_tier
+  end
+
+  # Get discount percentage
+  def discount_percentage
+    @loyalty_service.discount_percentage
+  end
+
+  # Check if discount is applied
+  def discount_applied?
+    discount_percentage > 0
   end
 end
 

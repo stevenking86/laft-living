@@ -5,8 +5,43 @@ const API_BASE_URL = API_CONFIG.BASE_URL;
 export interface User {
   id: number;
   email: string;
+  role?: string | null;
   created_at: string;
   updated_at: string;
+}
+
+export interface MaintenanceRequest {
+  id: number;
+  ticket_number: string;
+  category: string;
+  description: string;
+  preferred_entry_time?: string;
+  resident_must_be_home: boolean;
+  urgency_level: string;
+  status: string;
+  admin_notes?: string;
+  resident_visible_notes?: string;
+  resolution_notes?: string;
+  created_at: string;
+  updated_at: string;
+  property: {
+    id: number;
+    name: string;
+    address: string;
+  };
+  unit?: {
+    id: number;
+    name: string;
+  } | null;
+  user: {
+    id: number;
+    email: string;
+  };
+  assigned_maintenance_user?: {
+    id: number;
+    email: string;
+  } | null;
+  photos: string[];
 }
 
 
@@ -216,6 +251,139 @@ class ApiService {
       method: 'POST',
       body: JSON.stringify({ session_id: sessionId }),
     });
+  }
+
+  // Maintenance Request endpoints
+  async getMaintenanceRequests(): Promise<MaintenanceRequest[]> {
+    return this.request<MaintenanceRequest[]>('/api/v1/maintenance_requests');
+  }
+
+  async getMaintenanceRequest(id: number): Promise<MaintenanceRequest> {
+    return this.request<MaintenanceRequest>(`/api/v1/maintenance_requests/${id}`);
+  }
+
+  async createMaintenanceRequest(data: {
+    category: string;
+    description: string;
+    preferred_entry_time?: string;
+    resident_must_be_home: boolean;
+    urgency_level: string;
+    photos?: File[];
+  }): Promise<MaintenanceRequest> {
+    const formData = new FormData();
+    formData.append('maintenance_request[category]', data.category);
+    formData.append('maintenance_request[description]', data.description);
+    if (data.preferred_entry_time) {
+      formData.append('maintenance_request[preferred_entry_time]', data.preferred_entry_time);
+    }
+    formData.append('maintenance_request[resident_must_be_home]', data.resident_must_be_home.toString());
+    formData.append('maintenance_request[urgency_level]', data.urgency_level);
+    
+    if (data.photos) {
+      data.photos.forEach((photo) => {
+        formData.append('photos[]', photo);
+      });
+    }
+
+    const url = `${this.baseUrl}/api/v1/maintenance_requests`;
+    const response = await fetch(url, {
+      method: 'POST',
+      body: formData,
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  async updateMaintenanceRequest(id: number, data: {
+    urgency_level?: string;
+    status?: string;
+    assigned_maintenance_user_id?: number;
+    admin_notes?: string;
+    resident_visible_notes?: string;
+  }): Promise<MaintenanceRequest> {
+    return this.request<MaintenanceRequest>(`/api/v1/maintenance_requests/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ maintenance_request: data }),
+    });
+  }
+
+  async addMaintenanceRequestPhotos(id: number, photos: File[]): Promise<MaintenanceRequest> {
+    const formData = new FormData();
+    photos.forEach((photo) => {
+      formData.append('photos[]', photo);
+    });
+
+    const url = `${this.baseUrl}/api/v1/maintenance_requests/${id}/add_photos`;
+    const response = await fetch(url, {
+      method: 'POST',
+      body: formData,
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  async getMaintenanceUsers(propertyId: number): Promise<{ id: number; email: string }[]> {
+    return this.request<{ id: number; email: string }[]>(`/api/v1/maintenance_requests/maintenance_users?property_id=${propertyId}`);
+  }
+
+  async updateMaintenanceRequestResolution(id: number, data: {
+    resolution_notes?: string;
+    status?: string;
+    photos?: File[];
+  }): Promise<MaintenanceRequest> {
+    const formData = new FormData();
+    if (data.resolution_notes) {
+      formData.append('resolution_notes', data.resolution_notes);
+    }
+    if (data.status) {
+      formData.append('status', data.status);
+    }
+    if (data.photos) {
+      data.photos.forEach((photo) => {
+        formData.append('photos[]', photo);
+      });
+    }
+
+    const url = `${this.baseUrl}/api/v1/maintenance_requests/${id}/update_resolution`;
+    const response = await fetch(url, {
+      method: 'PATCH',
+      body: formData,
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  // Loyalty endpoints
+  async getLoyaltyStatus(): Promise<{
+    tier: string;
+    on_time_payments_count: number;
+    next_tier: string | null;
+    payments_needed_for_next_tier: number;
+    discount_percentage: number;
+    property: {
+      id: number;
+      name: string;
+    };
+  }> {
+    return this.request('/api/v1/loyalty');
   }
 
 }

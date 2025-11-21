@@ -11,7 +11,8 @@ class Api::V1::AuthController < ApplicationController
         message: 'Login successful',
         user: {
           id: user.id,
-          email: user.email
+          email: user.email,
+          role: user.role
         }
       }, status: :ok
     else
@@ -32,7 +33,8 @@ class Api::V1::AuthController < ApplicationController
     render json: {
       user: {
         id: @current_user.id,
-        email: @current_user.email
+        email: @current_user.email,
+        role: @current_user.role
       }
     }, status: :ok
   end

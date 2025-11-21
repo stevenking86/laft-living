@@ -1,12 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { apiService } from '@/lib/api';
-
-interface User {
-  id: number;
-  email: string;
-}
+import { apiService, User } from '@/lib/api';
 
 interface AuthContextType {
   user: User | null;
@@ -15,6 +10,10 @@ interface AuthContextType {
   signup: (email: string, password: string, passwordConfirmation: string) => Promise<void>;
   logout: () => Promise<void>;
   checkAuth: () => Promise<void>;
+  isResident: () => boolean;
+  isPropertyAdmin: () => boolean;
+  isMaintenance: () => boolean;
+  isSuperAdmin: () => boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -50,6 +49,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const response = await apiService.login(email, password);
       setUser(response.user);
+      return response;
     } catch (error) {
       throw error;
     }
@@ -78,6 +78,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     checkAuth();
   }, []);
 
+  const isResident = () => {
+    return !user?.role || user.role === 'resident';
+  };
+
+  const isPropertyAdmin = () => {
+    return user?.role === 'property_admin';
+  };
+
+  const isMaintenance = () => {
+    return user?.role === 'maintenance';
+  };
+
+  const isSuperAdmin = () => {
+    return user?.role === 'super_admin';
+  };
+
   const value: AuthContextType = {
     user,
     loading,
@@ -85,6 +101,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     signup,
     logout,
     checkAuth,
+    isResident,
+    isPropertyAdmin,
+    isMaintenance,
+    isSuperAdmin,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -12841,3 +12841,47 @@ Completed 200 OK in 40ms (Views: 0.1ms | ActiveRecord: 16.5ms (6 queries, 0 cach
 Completed 200 OK in 64ms (Views: 0.1ms | ActiveRecord: 30.6ms (31 queries, 10 cached) | GC: 0.0ms)
 
 
+Started POST "/api/v1/payments/create_intent" for 127.0.0.1 at 2025-12-01 17:17:16 +0000
+Processing by Api::V1::PaymentsController#create_intent as */*
+  Parameters: {"payment" => {}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (0.7ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mUnitMonthlyPrice Load (0.2ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/payments_controller.rb:79:in 'block in Api::V1::PaymentsController#create_intent'
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:79:in 'block in Api::V1::PaymentsController#create_intent'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:79:in 'block in Api::V1::PaymentsController#create_intent'
+  [1m[36mPayment Update (0.8ms)[0m  [1m[33mUPDATE "payments" SET "updated_at" = $1, "stripe_payment_intent_id" = $2 WHERE "payments"."id" = $3[0m  [["updated_at", "2025-12-01 17:17:16.925080"], ["stripe_payment_intent_id", "cs_test_a1CiXjTfZAJ7IP0n0PIboedj2oGv2Jtbk21zQ685kKNFYUoIzRruzT523p"], ["id", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:79:in 'block in Api::V1::PaymentsController#create_intent'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/payments_controller.rb:79:in 'block in Api::V1::PaymentsController#create_intent'
+Completed 200 OK in 863ms (Views: 0.2ms | ActiveRecord: 7.4ms (17 queries, 2 cached) | GC: 15.8ms)
+
+

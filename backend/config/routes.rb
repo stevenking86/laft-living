@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # Health check endpoint for Railway/deployment platforms
+  get '/up', to: proc { [200, {}, ['OK']] }
   
   namespace :api do
     namespace :v1 do

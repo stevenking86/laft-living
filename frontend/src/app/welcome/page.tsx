@@ -143,6 +143,18 @@ export default function Welcome() {
     >
       <div className="text-center w-full max-w-6xl px-4">
         <Typography
+          variant="h3"
+          component="h2"
+          sx={{
+            color: '#FFFFFF',
+            fontFamily: 'var(--font-lora), serif',
+            fontWeight: 'bold',
+            mb: 3,
+          }}
+        >
+          👋 Hi
+        </Typography>
+        <Typography
           variant="h2"
           component="h1"
           sx={{
@@ -383,6 +395,19 @@ export default function Welcome() {
 
         {/* Sign Out Button */}
         <Box sx={{ mt: 4 }}>
+          {user && (
+            <Typography
+              variant="body2"
+              sx={{
+                color: '#D3D3D3',
+                fontFamily: 'var(--font-lora), serif',
+                fontSize: '0.9rem',
+                mb: 2,
+              }}
+            >
+              You're logged in as {user.email.toLowerCase()}
+            </Typography>
+          )}
           <Button
             variant="outlined"
             size="large"

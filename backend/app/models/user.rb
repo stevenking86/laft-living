@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  # has_secure_password  # Temporarily disabled due to bcrypt loading issue
+  has_secure_password
   
   has_many :rental_applications, dependent: :destroy
   has_many :verifications, dependent: :destroy

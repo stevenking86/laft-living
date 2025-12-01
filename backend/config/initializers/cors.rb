@@ -7,7 +7,11 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://localhost:3000' # Next.js app URL
+    # Allow requests from localhost in development and production frontend URL
+    origins(
+      'http://localhost:3000',
+      ENV.fetch('FRONTEND_URL', 'http://localhost:3000')
+    )
 
     resource '*',
       headers: :any,

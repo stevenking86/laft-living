@@ -9,6 +9,9 @@ class RentalApplication < ApplicationRecord
 
   enum :status, { pending: 0, approved: 1, denied: 2 }
 
+  # Flag to skip move_in_date validation (useful for seeds)
+  attr_accessor :skip_move_in_date_validation
+
   validates :user, presence: true
   validates :property, presence: true
   validates :unit, presence: true
@@ -21,7 +24,7 @@ class RentalApplication < ApplicationRecord
   
   # Ensure the unit_monthly_price belongs to the same unit
   validate :unit_monthly_price_matches_unit
-  validate :move_in_date_must_be_in_future
+  validate :move_in_date_must_be_in_future, unless: :skip_move_in_date_validation
 
   private
 

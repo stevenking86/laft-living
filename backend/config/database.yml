@@ -13,6 +13,5 @@ test:
 
 production:
   <<: *default
-  database: laft_production
-  username: laft
-  password: <%= ENV["LAFT_DATABASE_PASSWORD"] %>
+  # Use DATABASE_URL if provided (Railway, Heroku, etc.), otherwise use explicit config
+  url: <%= ENV['DATABASE_URL'].presence || "postgresql://#{ENV.fetch('LAFT_DATABASE_USER', 'laft')}:#{ENV['LAFT_DATABASE_PASSWORD']}@#{ENV.fetch('LAFT_DATABASE_HOST', 'localhost')}/#{ENV.fetch('LAFT_DATABASE_NAME', 'laft_production')}" %>

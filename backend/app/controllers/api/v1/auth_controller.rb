@@ -4,8 +4,7 @@ class Api::V1::AuthController < ApplicationController
   def login
     user = User.find_by(email: params[:email])
     
-    # Temporarily simplified authentication - just check if user exists
-    if user
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       render json: {
         message: 'Login successful',

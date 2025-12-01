@@ -6,7 +6,7 @@ import { apiService, User } from '@/lib/api';
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<{ user: User; message: string }>;
   signup: (email: string, password: string, passwordConfirmation: string) => Promise<void>;
   logout: () => Promise<void>;
   checkAuth: () => Promise<void>;

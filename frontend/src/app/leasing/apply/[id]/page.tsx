@@ -80,7 +80,7 @@ export default function ApplyForUnit() {
     if (!unitId) return;
     try {
       setLoading(true);
-      const data = await apiService.getUnit(unitId);
+      const data = await apiService.getUnit(unitId) as Unit;
       setUnit(data);
       // Set default unit_monthly_price_id to first available price
       if (data.unit_monthly_prices && data.unit_monthly_prices.length > 0) {
@@ -97,9 +97,9 @@ export default function ApplyForUnit() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => {
     const name = e.target.name as string;
-    const value = e.target.value;
+    const value = e.target.value as string;
     setFormData(prev => ({
       ...prev,
       [name]: value,
@@ -526,7 +526,10 @@ export default function ApplyForUnit() {
                     <Select
                       name="gender"
                       value={formData.gender}
-                      onChange={handleChange}
+                      onChange={(e) => {
+                        const target = { name: 'gender', value: e.target.value as string };
+                        handleChange({ target } as React.ChangeEvent<HTMLInputElement>);
+                      }}
                       label="Gender"
                       sx={{
                         color: '#FFFFFF',
@@ -611,7 +614,10 @@ export default function ApplyForUnit() {
                     <Select
                       name="unit_monthly_price_id"
                       value={formData.unit_monthly_price_id}
-                      onChange={handleChange}
+                      onChange={(e) => {
+                        const target = { name: 'unit_monthly_price_id', value: e.target.value as string };
+                        handleChange({ target } as React.ChangeEvent<HTMLInputElement>);
+                      }}
                       label="Lease Term"
                       sx={{
                         color: '#FFFFFF',

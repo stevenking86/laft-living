@@ -59,13 +59,14 @@ export default function Leasing() {
   const fetchAvailableUnits = async () => {
     try {
       setLoadingUnits(true);
-      const data = await apiService.getUnits();
+      const data = await apiService.getUnits() as Unit[];
       setUnits(data);
       console.log('Fetched units:', data);
-    } catch (error) {
-      console.error('Error fetching units:', error);
+    } catch (error: unknown) {
+      const err = error instanceof Error ? error : new Error('Unknown error');
+      console.error('Error fetching units:', err);
       // If authentication error, redirect to sign in
-      if (error instanceof Error && error.message.includes('401') || error.message.includes('Authentication')) {
+      if (err.message.includes('401') || err.message.includes('Authentication')) {
         console.error('Authentication required - redirecting to sign in');
         router.push('/signin');
       }

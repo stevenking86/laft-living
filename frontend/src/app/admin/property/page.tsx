@@ -142,7 +142,12 @@ export default function PropertyAdminDashboard() {
 
     try {
       setSaving(true);
-      await apiService.updateMaintenanceRequest(editingRequest.id, editData);
+      // Convert null to undefined for API compatibility
+      const apiData = {
+        ...editData,
+        assigned_maintenance_user_id: editData.assigned_maintenance_user_id ?? undefined,
+      };
+      await apiService.updateMaintenanceRequest(editingRequest.id, apiData);
       await fetchRequests();
       setEditingRequest(null);
     } catch (error) {

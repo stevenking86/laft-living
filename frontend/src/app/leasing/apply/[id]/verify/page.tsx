@@ -119,8 +119,12 @@ export default function VerifyId() {
       if (result.verification_status === 'pending') {
         pollVerificationStatus();
       }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to upload ID');
+    } catch (err: unknown) {
+      let errorMessage = 'Failed to upload ID';
+      if (err && typeof err === 'object' && 'message' in err && typeof err.message === 'string') {
+        errorMessage = err.message;
+      }
+      setError(errorMessage);
     } finally {
       setUploading(false);
     }

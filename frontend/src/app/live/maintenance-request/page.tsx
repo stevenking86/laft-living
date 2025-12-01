@@ -22,7 +22,6 @@ import {
   CircularProgress,
   Chip,
   Divider,
-  Grid,
 } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
 
@@ -457,47 +456,49 @@ export default function MaintenanceRequestPage() {
 
                       <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.2)' }} />
 
-                      <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6}>
-                          <Typography sx={{ color: '#39a0ca', fontFamily: 'var(--font-lora), serif', fontWeight: 'bold' }}>
-                            Category:
-                          </Typography>
-                          <Typography sx={{ color: '#FFFFFF', fontFamily: 'var(--font-lora), serif' }}>
-                            {request.category}
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                          <Typography sx={{ color: '#39a0ca', fontFamily: 'var(--font-lora), serif', fontWeight: 'bold' }}>
-                            Urgency:
-                          </Typography>
-                          <Typography sx={{ color: '#FFFFFF', fontFamily: 'var(--font-lora), serif' }}>
-                            {request.urgency_level}
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={12}>
+                      <Stack spacing={2}>
+                        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+                          <Box sx={{ flex: 1 }}>
+                            <Typography sx={{ color: '#39a0ca', fontFamily: 'var(--font-lora), serif', fontWeight: 'bold' }}>
+                              Category:
+                            </Typography>
+                            <Typography sx={{ color: '#FFFFFF', fontFamily: 'var(--font-lora), serif' }}>
+                              {request.category}
+                            </Typography>
+                          </Box>
+                          <Box sx={{ flex: 1 }}>
+                            <Typography sx={{ color: '#39a0ca', fontFamily: 'var(--font-lora), serif', fontWeight: 'bold' }}>
+                              Urgency:
+                            </Typography>
+                            <Typography sx={{ color: '#FFFFFF', fontFamily: 'var(--font-lora), serif' }}>
+                              {request.urgency_level}
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Box>
                           <Typography sx={{ color: '#39a0ca', fontFamily: 'var(--font-lora), serif', fontWeight: 'bold' }}>
                             Description:
                           </Typography>
                           <Typography sx={{ color: '#FFFFFF', fontFamily: 'var(--font-lora), serif' }}>
                             {request.description}
                           </Typography>
-                        </Grid>
+                        </Box>
                         {request.resident_visible_notes && (
-                          <Grid item xs={12}>
+                          <Box>
                             <Typography sx={{ color: '#39a0ca', fontFamily: 'var(--font-lora), serif', fontWeight: 'bold' }}>
                               Notes:
                             </Typography>
                             <Typography sx={{ color: '#FFFFFF', fontFamily: 'var(--font-lora), serif' }}>
                               {request.resident_visible_notes}
                             </Typography>
-                          </Grid>
+                          </Box>
                         )}
-                        <Grid item xs={12}>
+                        <Box>
                           <Typography sx={{ color: '#D3D3D3', fontFamily: 'var(--font-lora), serif', fontSize: '0.9rem' }}>
                             Submitted: {new Date(request.created_at).toLocaleDateString()}
                           </Typography>
-                        </Grid>
-                      </Grid>
+                        </Box>
+                      </Stack>
                     </Stack>
                   </CardContent>
                 </Card>

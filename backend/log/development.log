@@ -12885,3 +12885,739 @@ Processing by Api::V1::PaymentsController#create_intent as */*
 Completed 200 OK in 863ms (Views: 0.2ms | ActiveRecord: 7.4ms (17 queries, 2 cached) | GC: 15.8ms)
 
 
+Started GET "/api/v1/auth/me" for 127.0.0.1 at 2025-12-01 21:43:28 +0000
+Processing by Api::V1::AuthController#me as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:44:in 'Api::V1::AuthController#authenticate_user'
+Completed 200 OK in 26ms (Views: 0.1ms | ActiveRecord: 11.2ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/rental_applications" for 127.0.0.1 at 2025-12-01 21:43:29 +0000
+Processing by Api::V1::RentalApplicationsController#index as */*
+  Parameters: {"rental_application" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mRentalApplication Load (1.6ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (1.3ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mUnit Load (0.9ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Load (2.5ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."rental_application_id" = $1[0m  [["rental_application_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+Completed 200 OK in 48ms (Views: 0.5ms | ActiveRecord: 17.3ms (5 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/api/v1/rental_applications" for 127.0.0.1 at 2025-12-01 21:43:29 +0000
+Processing by Api::V1::RentalApplicationsController#index as */*
+  Parameters: {"rental_application" => {}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mRentalApplication Load (0.4ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.8ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mUnit Load (0.4ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Load (0.5ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."rental_application_id" = $1[0m  [["rental_application_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+Completed 200 OK in 13ms (Views: 0.1ms | ActiveRecord: 2.4ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/leases" for 127.0.0.1 at 2025-12-01 21:43:34 +0000
+Processing by Api::V1::LeasesController#index as */*
+  Parameters: {"lease" => {}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (2.3ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mProperty Load (0.8ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mUnit Load (0.2ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mRentalApplication Load (0.4ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+Completed 200 OK in 13ms (Views: 0.1ms | ActiveRecord: 4.2ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/leases" for 127.0.0.1 at 2025-12-01 21:43:34 +0000
+Processing by Api::V1::LeasesController#index as */*
+  Parameters: {"lease" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (1.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mProperty Load (0.4ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mUnit Load (0.3ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mRentalApplication Load (0.3ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 2.3ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/payments/outstanding" for 127.0.0.1 at 2025-12-01 21:43:34 +0000
+Processing by Api::V1::PaymentsController#outstanding as */*
+  Parameters: {"payment" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (1.5ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mRentalApplication Load (0.5ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mUnitMonthlyPrice Load (1.0ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mUserProperty Load (1.3ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (1.6ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+Completed 200 OK in 39ms (Views: 0.1ms | ActiveRecord: 8.7ms (31 queries, 10 cached) | GC: 2.2ms)
+
+
+Started GET "/api/v1/payments/outstanding" for 127.0.0.1 at 2025-12-01 21:43:34 +0000
+Processing by Api::V1::PaymentsController#outstanding as */*
+  Parameters: {"payment" => {}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (0.7ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mUnitMonthlyPrice Load (0.1ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.4ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.2ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+Completed 200 OK in 24ms (Views: 0.1ms | ActiveRecord: 3.6ms (31 queries, 10 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/payments/outstanding" for 127.0.0.1 at 2025-12-01 21:43:36 +0000
+Started GET "/api/v1/payments/last_paid" for 127.0.0.1 at 2025-12-01 21:43:36 +0000
+Processing by Api::V1::PaymentsController#outstanding as */*
+  Parameters: {"payment" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+Processing by Api::V1::PaymentsController#last_paid as */*
+  [1m[36mLease Load (0.9ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  Parameters: {"payment" => {}}
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mRentalApplication Load (0.5ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mUnitMonthlyPrice Load (0.4ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.2ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.2ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (15.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (1.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mLease Load (3.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mUserProperty Load (0.8ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+Completed 200 OK in 30ms (Views: 0.1ms | ActiveRecord: 6.2ms (31 queries, 10 cached) | GC: 0.0ms)
+
+
+  [1m[36mRentalApplication Load (1.6ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+Started GET "/api/v1/payments/outstanding" for 127.0.0.1 at 2025-12-01 21:43:37 +0000
+  [1m[36mUnitMonthlyPrice Load (1.4ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mProperty Load (1.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mPayment Load (1.5ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."status" = $2 ORDER BY "payments"."payment_month" DESC LIMIT $3[0m  [["lease_id", 2], ["status", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:95:in 'PaymentCalculationService#last_paid_date'
+Completed 200 OK in 36ms (Views: 0.1ms | ActiveRecord: 34.1ms (6 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/payments/last_paid" for 127.0.0.1 at 2025-12-01 21:43:37 +0000
+Processing by Api::V1::PaymentsController#outstanding as */*
+  Parameters: {"payment" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (0.8ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mUnitMonthlyPrice Load (0.2ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mUserProperty Load (1.4ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+Processing by Api::V1::PaymentsController#last_paid as */*
+  [1m[36mPayment Load (0.8ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  Parameters: {"payment" => {}}
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mPayment Load (1.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mLease Load (0.7ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mUserProperty Load (0.7ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  [1m[36mRentalApplication Load (0.5ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mUnitMonthlyPrice Load (0.7ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mPayment Load (2.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mProperty Load (1.6ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mPayment Load (1.6ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.3ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  [1m[36mPayment Load (1.4ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."status" = $2 ORDER BY "payments"."payment_month" DESC LIMIT $3[0m  [["lease_id", 2], ["status", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  ↳ app/services/payment_calculation_service.rb:95:in 'PaymentCalculationService#last_paid_date'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 5.5ms (6 queries, 0 cached) | GC: 0.7ms)
+
+
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.4ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.2ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.3ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.7ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.8ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.4ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+Completed 200 OK in 50ms (Views: 0.1ms | ActiveRecord: 13.4ms (31 queries, 10 cached) | GC: 2.6ms)
+
+
+Started GET "/api/v1/leases" for 127.0.0.1 at 2025-12-01 21:43:38 +0000
+Processing by Api::V1::LeasesController#index as */*
+  Parameters: {"lease" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (0.5ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mUnit Load (0.6ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 1.9ms (5 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/api/v1/leases" for 127.0.0.1 at 2025-12-01 21:43:38 +0000
+Processing by Api::V1::LeasesController#index as */*
+  Parameters: {"lease" => {}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (0.3ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+Started GET "/api/v1/payments/outstanding" for 127.0.0.1 at 2025-12-01 21:43:38 +0000
+  [1m[36mUnit Load (0.7ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mRentalApplication Load (0.4ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 2.2ms (5 queries, 0 cached) | GC: 0.2ms)
+
+
+Processing by Api::V1::PaymentsController#outstanding as */*
+  Parameters: {"payment" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (0.5ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mRentalApplication Load (0.3ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mUnitMonthlyPrice Load (0.2ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+Completed 200 OK in 19ms (Views: 0.1ms | ActiveRecord: 3.0ms (31 queries, 10 cached) | GC: 0.7ms)
+
+
+Started GET "/api/v1/payments/outstanding" for 127.0.0.1 at 2025-12-01 21:43:38 +0000
+Processing by Api::V1::PaymentsController#outstanding as */*
+  Parameters: {"payment" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (0.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mUnitMonthlyPrice Load (0.1ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+Completed 200 OK in 20ms (Views: 0.1ms | ActiveRecord: 2.7ms (31 queries, 10 cached) | GC: 2.1ms)
+
+
+Started GET "/api/v1/maintenance_requests" for 127.0.0.1 at 2025-12-01 21:43:42 +0000
+Processing by Api::V1::MaintenanceRequestsController#index as */*
+  Parameters: {"maintenance_request" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mMaintenanceRequest Load (1.6ms)[0m  [1m[34mSELECT "maintenance_requests".* FROM "maintenance_requests" WHERE "maintenance_requests"."user_id" = $1 ORDER BY "maintenance_requests"."created_at" DESC[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/maintenance_requests_controller.rb:20:in 'Enumerable#map'
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 8.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/maintenance_requests" for 127.0.0.1 at 2025-12-01 21:43:42 +0000
+Processing by Api::V1::MaintenanceRequestsController#index as */*
+  Parameters: {"maintenance_request" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mMaintenanceRequest Load (0.5ms)[0m  [1m[34mSELECT "maintenance_requests".* FROM "maintenance_requests" WHERE "maintenance_requests"."user_id" = $1 ORDER BY "maintenance_requests"."created_at" DESC[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/maintenance_requests_controller.rb:20:in 'Enumerable#map'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/leases" for 127.0.0.1 at 2025-12-01 21:43:46 +0000
+Processing by Api::V1::LeasesController#index as */*
+  Parameters: {"lease" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (0.4ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mRentalApplication Load (0.1ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 1.0ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/leases" for 127.0.0.1 at 2025-12-01 21:43:46 +0000
+Processing by Api::V1::LeasesController#index as */*
+  Parameters: {"lease" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (0.5ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" WHERE "lease_tenants"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/leases_controller.rb:7:in 'Enumerable#map'
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 1.3ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/payments/outstanding" for 127.0.0.1 at 2025-12-01 21:43:46 +0000
+Processing by Api::V1::PaymentsController#outstanding as */*
+  Parameters: {"payment" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (3.6ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mRentalApplication Load (0.3ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mUnitMonthlyPrice Load (0.2ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 6.2ms (31 queries, 10 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/payments/outstanding" for 127.0.0.1 at 2025-12-01 21:43:46 +0000
+Processing by Api::V1::PaymentsController#outstanding as */*
+  Parameters: {"payment" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mLease Load (0.8ms)[0m  [1m[34mSELECT "leases".* FROM "leases" INNER JOIN "lease_tenants" ON "leases"."id" = "lease_tenants"."lease_id" INNER JOIN "rental_applications" ON "rental_applications"."id" = "leases"."rental_application_id" WHERE "lease_tenants"."user_id" = $1 AND "rental_applications"."status" = $2 AND (leases.move_in_date <= $3) AND (leases.move_out_date IS NULL OR leases.move_out_date >= $4) ORDER BY "leases"."id" ASC LIMIT $5[0m  [["user_id", 2], ["status", 1], [nil, "2025-12-01"], [nil, "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/payments_controller.rb:154:in 'Api::V1::PaymentsController#set_active_lease'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mUnitMonthlyPrice Load (0.1ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/lease.rb:17:in 'Lease#monthly_rent'
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:6:in 'PaymentCalculationService#initialize'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.2ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.2ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.1ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."lease_id" = $1 AND "payments"."user_id" = $2 AND "payments"."payment_month" = $3 LIMIT $4[0m  [["lease_id", 2], ["user_id", 2], ["payment_month", "2025-12-01"], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:39:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/payment_calculation_service.rb:45:in 'PaymentCalculationService#outstanding_payments'
+  [1m[36mUserProperty Load (0.2ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+  [1m[36mCACHE UserProperty Load (0.0ms)[0m  [1m[34mSELECT "user_properties".* FROM "user_properties" WHERE "user_properties"."user_id" = $1 AND "user_properties"."property_id" = $2 LIMIT $3[0m  [["user_id", 2], ["property_id", 1], ["LIMIT", 1]]
+  ↳ app/services/loyalty_tier_service.rb:52:in 'LoyaltyTierService#current_tier'
+Completed 200 OK in 27ms (Views: 0.1ms | ActiveRecord: 4.0ms (31 queries, 10 cached) | GC: 5.3ms)
+
+

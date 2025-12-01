@@ -18,7 +18,6 @@ import {
   FormControl,
   InputLabel,
   Chip,
-  Grid,
 } from '@mui/material';
 import { ArrowBack, LocationOn, Pets, LocalParking } from '@mui/icons-material';
 
@@ -337,9 +336,9 @@ export default function ApplyForUnit() {
             )}
 
             <form onSubmit={handleSubmit}>
-              <Grid container spacing={3}>
+              <Stack spacing={3}>
                 {/* Email (read-only) */}
-                <Grid item xs={12}>
+                <Box>
                   <TextField
                     name="email"
                     label="Email Address"
@@ -368,10 +367,11 @@ export default function ApplyForUnit() {
                       },
                     }}
                   />
-                </Grid>
+                </Box>
 
-                {/* First Name */}
-                <Grid item xs={12} sm={4}>
+                {/* First Name, Middle Name, Last Name */}
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+                  <Box sx={{ flex: 1 }}>
                   <TextField
                     name="first_name"
                     label="First Name"
@@ -402,10 +402,10 @@ export default function ApplyForUnit() {
                       },
                     }}
                   />
-                </Grid>
+                  </Box>
 
-                {/* Middle Name */}
-                <Grid item xs={12} sm={4}>
+                  {/* Middle Name */}
+                  <Box sx={{ flex: 1 }}>
                   <TextField
                     name="middle_name"
                     label="Middle Name (Optional)"
@@ -435,10 +435,10 @@ export default function ApplyForUnit() {
                       },
                     }}
                   />
-                </Grid>
+                  </Box>
 
-                {/* Last Name */}
-                <Grid item xs={12} sm={4}>
+                  {/* Last Name */}
+                  <Box sx={{ flex: 1 }}>
                   <TextField
                     name="last_name"
                     label="Last Name"
@@ -469,10 +469,12 @@ export default function ApplyForUnit() {
                       },
                     }}
                   />
-                </Grid>
+                  </Box>
+                </Box>
 
-                {/* Date of Birth */}
-                <Grid item xs={12} sm={4}>
+                {/* Date of Birth and Gender */}
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+                  <Box sx={{ flex: { xs: 1, sm: '0 0 33.333%' } }}>
                   <TextField
                     name="date_of_birth"
                     label="Date of Birth"
@@ -506,10 +508,10 @@ export default function ApplyForUnit() {
                       },
                     }}
                   />
-                </Grid>
+                  </Box>
 
-                {/* Gender */}
-                <Grid item xs={12} sm={8}>
+                  {/* Gender */}
+                  <Box sx={{ flex: { xs: 1, sm: '0 0 66.666%' } }}>
                   <FormControl fullWidth required>
                     <InputLabel
                       sx={{
@@ -549,10 +551,12 @@ export default function ApplyForUnit() {
                       <MenuItem value="prefer-not-to-say">Prefer not to say</MenuItem>
                     </Select>
                   </FormControl>
-                </Grid>
+                  </Box>
+                </Box>
 
-                {/* Move-in Date */}
-                <Grid item xs={12} sm={6}>
+                {/* Move-in Date and Lease Term */}
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+                  <Box sx={{ flex: 1 }}>
                   <TextField
                     name="move_in_date"
                     label="Move-in Date"
@@ -589,10 +593,10 @@ export default function ApplyForUnit() {
                       },
                     }}
                   />
-                </Grid>
+                  </Box>
 
-                {/* Lease Term Selection */}
-                <Grid item xs={12} sm={6}>
+                  {/* Lease Term Selection */}
+                  <Box sx={{ flex: 1 }}>
                   <FormControl fullWidth required>
                     <InputLabel
                       sx={{
@@ -632,10 +636,11 @@ export default function ApplyForUnit() {
                       ))}
                     </Select>
                   </FormControl>
-                </Grid>
+                  </Box>
+                </Box>
 
                 {/* Submit Button */}
-                <Grid item xs={12}>
+                <Box>
                   <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
                     <Button
                       type="submit"
@@ -673,8 +678,8 @@ export default function ApplyForUnit() {
                       Cancel
                     </Button>
                   </Stack>
-                </Grid>
-              </Grid>
+                </Box>
+              </Stack>
             </form>
           </CardContent>
         </Card>

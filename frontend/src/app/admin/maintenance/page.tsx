@@ -14,7 +14,6 @@ import {
   TextField,
   Chip,
   Divider,
-  Grid,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -210,50 +209,52 @@ export default function MaintenanceDashboard() {
 
                   <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.2)' }} />
 
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                      <Typography
-                        sx={{
-                          color: '#39a0ca',
-                          fontFamily: 'var(--font-lora), serif',
-                          fontWeight: 'bold',
-                          fontSize: { xs: '0.875rem', sm: '1rem' },
-                        }}
-                      >
-                        Property:
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: '#FFFFFF',
-                          fontFamily: 'var(--font-lora), serif',
-                          fontSize: { xs: '0.875rem', sm: '1rem' },
-                        }}
-                      >
-                        {request.property.name}
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Typography
-                        sx={{
-                          color: '#39a0ca',
-                          fontFamily: 'var(--font-lora), serif',
-                          fontWeight: 'bold',
-                          fontSize: { xs: '0.875rem', sm: '1rem' },
-                        }}
-                      >
-                        Category:
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: '#FFFFFF',
-                          fontFamily: 'var(--font-lora), serif',
-                          fontSize: { xs: '0.875rem', sm: '1rem' },
-                        }}
-                      >
-                        {request.category}
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
+                  <Stack spacing={2}>
+                    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+                      <Box sx={{ flex: 1 }}>
+                        <Typography
+                          sx={{
+                            color: '#39a0ca',
+                            fontFamily: 'var(--font-lora), serif',
+                            fontWeight: 'bold',
+                            fontSize: { xs: '0.875rem', sm: '1rem' },
+                          }}
+                        >
+                          Property:
+                        </Typography>
+                        <Typography
+                          sx={{
+                            color: '#FFFFFF',
+                            fontFamily: 'var(--font-lora), serif',
+                            fontSize: { xs: '0.875rem', sm: '1rem' },
+                          }}
+                        >
+                          {request.property.name}
+                        </Typography>
+                      </Box>
+                      <Box sx={{ flex: 1 }}>
+                        <Typography
+                          sx={{
+                            color: '#39a0ca',
+                            fontFamily: 'var(--font-lora), serif',
+                            fontWeight: 'bold',
+                            fontSize: { xs: '0.875rem', sm: '1rem' },
+                          }}
+                        >
+                          Category:
+                        </Typography>
+                        <Typography
+                          sx={{
+                            color: '#FFFFFF',
+                            fontFamily: 'var(--font-lora), serif',
+                            fontSize: { xs: '0.875rem', sm: '1rem' },
+                          }}
+                        >
+                          {request.category}
+                        </Typography>
+                      </Box>
+                    </Box>
+                    <Box>
                       <Typography
                         sx={{
                           color: '#39a0ca',
@@ -273,9 +274,9 @@ export default function MaintenanceDashboard() {
                       >
                         {request.description}
                       </Typography>
-                    </Grid>
+                    </Box>
                     {request.admin_notes && (
-                      <Grid item xs={12}>
+                      <Box>
                         <Typography
                           sx={{
                             color: '#39a0ca',
@@ -295,10 +296,10 @@ export default function MaintenanceDashboard() {
                         >
                           {request.admin_notes}
                         </Typography>
-                      </Grid>
+                      </Box>
                     )}
                     {request.photos && request.photos.length > 0 && (
-                      <Grid item xs={12}>
+                      <Box>
                         <Typography
                           sx={{
                             color: '#39a0ca',
@@ -325,9 +326,9 @@ export default function MaintenanceDashboard() {
                             />
                           ))}
                         </Box>
-                      </Grid>
+                      </Box>
                     )}
-                  </Grid>
+                  </Stack>
 
                   <Button
                     variant="contained"

@@ -49,9 +49,10 @@ export default function Rewards() {
         setLoadingStatus(true);
         const status = await apiService.getLoyaltyStatus();
         setLoyaltyStatus(status);
-      } catch (error: any) {
-        console.error('Error fetching loyalty status:', error);
-        setError(error.message || 'Failed to load loyalty status');
+      } catch (error: unknown) {
+        const err = error instanceof Error ? error : new Error('Unknown error');
+        console.error('Error fetching loyalty status:', err);
+        setError(err.message || 'Failed to load loyalty status');
       } finally {
         setLoadingStatus(false);
       }
@@ -306,7 +307,7 @@ export default function Rewards() {
                       fontWeight: 'bold',
                     }}
                   >
-                    You've reached the highest tier! 🎉
+                    You&apos;ve reached the highest tier! 🎉
                   </Typography>
                 )}
               </Box>
@@ -338,7 +339,7 @@ export default function Rewards() {
                       fontFamily: 'var(--font-lora), serif',
                     }}
                   >
-                    You're saving {loyaltyStatus.discount_percentage}% on all rent payments!
+                    You&apos;re saving {loyaltyStatus.discount_percentage}% on all rent payments!
                   </Typography>
                 </Box>
               )}

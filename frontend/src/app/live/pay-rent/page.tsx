@@ -69,9 +69,10 @@ export default function PayRent() {
         ]);
         setPaymentsData(payments);
         setLastPaidDate(lastPaid.last_paid_date);
-      } catch (error: any) {
-        console.error('Error fetching payment data:', error);
-        setError(error.message || 'Failed to load payment information');
+      } catch (error: unknown) {
+        const err = error instanceof Error ? error : new Error('Unknown error');
+        console.error('Error fetching payment data:', err);
+        setError(err.message || 'Failed to load payment information');
       } finally {
         setLoadingPayments(false);
       }
@@ -111,9 +112,10 @@ export default function PayRent() {
       setTimeout(() => {
         router.push('/live');
       }, 2000);
-    } catch (error: any) {
-      console.error('Error confirming payment:', error);
-      setError(error.message || 'Failed to confirm payment');
+    } catch (error: unknown) {
+      const err = error instanceof Error ? error : new Error('Unknown error');
+      console.error('Error confirming payment:', err);
+      setError(err.message || 'Failed to confirm payment');
     } finally {
       setProcessing(false);
     }
@@ -136,9 +138,10 @@ export default function PayRent() {
       } else {
         throw new Error('No checkout URL received');
       }
-    } catch (error: any) {
-      console.error('Error initiating payment:', error);
-      setError(error.message || 'Failed to initiate payment');
+    } catch (error: unknown) {
+      const err = error instanceof Error ? error : new Error('Unknown error');
+      console.error('Error initiating payment:', err);
+      setError(err.message || 'Failed to initiate payment');
       setProcessing(false);
     }
   };
@@ -346,7 +349,7 @@ export default function PayRent() {
                             mt: 0.5,
                           }}
                         >
-                          You're saving ${(paymentsData.original_total_amount - paymentsData.total_amount).toFixed(2)}!
+                          You&apos;re saving ${(paymentsData.original_total_amount - paymentsData.total_amount).toFixed(2)}!
                         </Typography>
                       )}
                     </Box>

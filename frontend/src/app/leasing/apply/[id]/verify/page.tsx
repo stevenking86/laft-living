@@ -17,6 +17,25 @@ import {
 } from '@mui/material';
 import { ArrowBack, CloudUpload, CheckCircle, Error } from '@mui/icons-material';
 
+interface Verification {
+  id: number;
+  verification_status: 'pending' | 'verified' | 'failed';
+  name_match?: boolean;
+  failure_reason?: string;
+  debug_info?: {
+    app_first: string;
+    app_middle?: string;
+    app_last: string;
+    id_first: string;
+    id_middle?: string;
+    id_last: string;
+    first_match: boolean;
+    last_match: boolean;
+    middle_match: boolean;
+    id_valid: boolean;
+  };
+}
+
 export default function VerifyId() {
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
@@ -27,7 +46,7 @@ export default function VerifyId() {
   const [preview, setPreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [verifying, setVerifying] = useState(false);
-  const [verification, setVerification] = useState<any>(null);
+  const [verification, setVerification] = useState<Verification | null>(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -313,7 +332,7 @@ export default function VerifyId() {
                     mb: 3,
                   }}
                 >
-                  Please upload a clear photo of your driver's license, passport, or other
+                  Please upload a clear photo of your driver&apos;s license, passport, or other
                   government-issued ID. The name on the ID must match the name on your
                   application.
                 </Typography>

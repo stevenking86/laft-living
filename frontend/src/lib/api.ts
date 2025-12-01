@@ -135,12 +135,12 @@ class ApiService {
   }
 
   // Units endpoints
-  async getUnits(): Promise<any[]> {
-    return this.request<any[]>('/api/v1/units');
+  async getUnits(): Promise<unknown[]> {
+    return this.request<unknown[]>('/api/v1/units');
   }
 
-  async getUnit(id: number): Promise<any> {
-    return this.request<any>(`/api/v1/units/${id}`);
+  async getUnit(id: number): Promise<unknown> {
+    return this.request<unknown>(`/api/v1/units/${id}`);
   }
 
   // Rental Applications endpoints

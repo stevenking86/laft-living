@@ -66,7 +66,7 @@ export default function SignLease() {
     try {
       setLoading(true);
       const applications = await apiService.getRentalApplications();
-      const app = applications.find((a: any) => a.id === applicationId);
+      const app = applications.find((a: RentalApplication) => a.id === applicationId);
       
       if (!app) {
         setError('Application not found');
@@ -84,8 +84,9 @@ export default function SignLease() {
       }
       
       setApplication(app);
-    } catch (err: any) {
-      setError(err.message || 'Failed to load application');
+    } catch (err: unknown) {
+      const error = err instanceof Error ? err : new Error('Unknown error');
+      setError(error.message || 'Failed to load application');
     } finally {
       setLoading(false);
     }
@@ -103,8 +104,9 @@ export default function SignLease() {
     try {
       await apiService.createLease(applicationId);
       setSigned(true);
-    } catch (err: any) {
-      setError(err.message || 'Failed to sign lease');
+    } catch (err: unknown) {
+      const error = err instanceof Error ? err : new Error('Unknown error');
+      setError(error.message || 'Failed to sign lease');
     } finally {
       setSigning(false);
     }

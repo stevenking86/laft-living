@@ -405,7 +405,7 @@ export default function Welcome() {
                 mb: 2,
               }}
             >
-              You're logged in as {user.email.toLowerCase()}
+              You&apos;re logged in as {user.email.toLowerCase()}
             </Typography>
           )}
           <Button

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { apiService } from '@/lib/api';
@@ -41,7 +41,7 @@ interface OutstandingPaymentsResponse {
   discount_applied?: boolean;
 }
 
-export default function PayRent() {
+function PayRentContent() {
   const { user, loading } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -485,6 +485,23 @@ export default function PayRent() {
         </Card>
       </Box>
     </div>
+  );
+}
+
+export default function PayRent() {
+  return (
+    <Suspense fallback={
+      <div
+        className="min-h-screen relative flex items-center justify-center"
+        style={{
+          backgroundColor: '#161748',
+        }}
+      >
+        <CircularProgress sx={{ color: '#FFFFFF' }} />
+      </div>
+    }>
+      <PayRentContent />
+    </Suspense>
   );
 }
 

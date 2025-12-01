@@ -164,8 +164,8 @@ class Api::V1::PaymentsController < ApplicationController
     
     result = {
       id: payment.id,
-      amount: chargeable,
-      original_amount: original,
+      amount: chargeable.to_f,
+      original_amount: original.to_f,
       payment_month: payment.payment_month,
       due_date: payment.due_date,
       status: payment.status,
@@ -177,7 +177,7 @@ class Api::V1::PaymentsController < ApplicationController
     # Add discount info if service is provided and discount applies
     if service && service.discount_applied?
       result[:discount_applied] = true
-      result[:discount_amount] = (original - chargeable).round(2)
+      result[:discount_amount] = (original - chargeable).round(2).to_f
     end
     
     result

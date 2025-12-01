@@ -64,20 +64,20 @@ class PaymentCalculationService
 
   # Get chargeable amount for a payment (with discount applied if applicable)
   def chargeable_amount(payment)
-    return payment.amount if discount_percentage == 0
+    return payment.amount.to_f if discount_percentage == 0
     
     # Apply discount to the payment amount
-    (payment.amount * (1 - discount_percentage / 100.0)).round(2)
+    (payment.amount * (1 - discount_percentage / 100.0)).round(2).to_f
   end
 
   # Calculate total amount owed (with discounts applied)
   def total_amount_owed
-    outstanding_payments.sum { |p| chargeable_amount(p) }
+    outstanding_payments.sum { |p| chargeable_amount(p) }.to_f
   end
 
   # Get original total amount before discounts
   def original_total_amount
-    outstanding_payments.sum(&:amount)
+    outstanding_payments.sum(&:amount).to_f
   end
 
   # Get overdue payments (after 10th of month and not paid)

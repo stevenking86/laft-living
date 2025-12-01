@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
-# Demo Date: December 5, 2024
+# Demo Date: December 5, 2025
 # This seed file creates comprehensive test data for 7 demo scenarios.
 
 # Clear existing data (be careful in production!)
@@ -122,7 +122,7 @@ pre_movein_lease = Lease.create!(
   unit: meadows_unit_1,
   move_in_date: Date.new(2025, 1, 15),
   signed: true,
-  signed_date: Date.new(2024, 11, 20)
+  signed_date: Date.new(2025, 11, 20)
 )
 
 LeaseTenant.create!(
@@ -149,7 +149,7 @@ moved_in_app = RentalApplication.new(
   property: meadows,
   unit: meadows_unit_2,
   unit_monthly_price: meadows_unit_2_price,
-  move_in_date: Date.new(2024, 11, 1), # Moved in November
+  move_in_date: Date.new(2025, 11, 1), # Moved in November
   status: :approved,
   first_name: "Sarah",
   last_name: "Williams",
@@ -163,9 +163,9 @@ moved_in_lease = Lease.create!(
   rental_application: moved_in_app,
   property: meadows,
   unit: meadows_unit_2,
-  move_in_date: Date.new(2024, 11, 1),
+  move_in_date: Date.new(2025, 11, 1),
   signed: true,
-  signed_date: Date.new(2024, 10, 15)
+  signed_date: Date.new(2025, 10, 15)
 )
 
 LeaseTenant.create!(
@@ -180,14 +180,14 @@ UserProperty.create!(
   loyalty_tier: :bronze
 )
 
-# Payment for December 2024 (first payment month after move-in)
+# Payment for December 2025 (first payment month after move-in)
 # First payment is due the month AFTER move_in_date
 dec_payment = Payment.create!(
   user: moved_in_user,
   lease: moved_in_lease,
   amount: 1250.00,
-  due_date: Date.new(2024, 12, 1),
-  payment_month: Date.new(2024, 12, 1),
+  due_date: Date.new(2025, 12, 1),
+  payment_month: Date.new(2025, 12, 1),
   status: :pending
 )
 
@@ -208,7 +208,7 @@ loyalty_app = RentalApplication.new(
   property: meadows,
   unit: meadows_unit_3,
   unit_monthly_price: meadows_unit_3_price,
-  move_in_date: Date.new(2024, 5, 1), # Moved in May 2024 (to get 6 payments for Gold tier)
+  move_in_date: Date.new(2025, 5, 1), # Moved in May 2025 (to get 6 payments for Gold tier)
   status: :approved,
   first_name: "Michael",
   last_name: "Chen",
@@ -222,9 +222,9 @@ loyalty_lease = Lease.create!(
   rental_application: loyalty_app,
   property: meadows,
   unit: meadows_unit_3,
-  move_in_date: Date.new(2024, 5, 1),
+  move_in_date: Date.new(2025, 5, 1),
   signed: true,
-  signed_date: Date.new(2024, 4, 20)
+  signed_date: Date.new(2025, 4, 20)
 )
 
 LeaseTenant.create!(
@@ -240,14 +240,14 @@ UserProperty.create!(
 )
 
 # Create 6+ historical payments that were paid on time (on or before 10th of month)
-# First payment month is June 2024 (month after move-in in May)
+# First payment month is June 2025 (month after move-in in May)
 payment_months = [
-  Date.new(2024, 6, 1),
-  Date.new(2024, 7, 1),
-  Date.new(2024, 8, 1),
-  Date.new(2024, 9, 1),
-  Date.new(2024, 10, 1),
-  Date.new(2024, 11, 1)
+  Date.new(2025, 6, 1),
+  Date.new(2025, 7, 1),
+  Date.new(2025, 8, 1),
+  Date.new(2025, 9, 1),
+  Date.new(2025, 10, 1),
+  Date.new(2025, 11, 1)
 ]
 
 payment_months.each do |month|
@@ -263,13 +263,13 @@ payment_months.each do |month|
   )
 end
 
-# Current payment for December 2024 - pending (not paid)
+# Current payment for December 2025 - pending (not paid)
 dec_payment_loyalty = Payment.create!(
   user: loyalty_user,
   lease: loyalty_lease,
   amount: 1300.00,
-  due_date: Date.new(2024, 12, 1),
-  payment_month: Date.new(2024, 12, 1),
+  due_date: Date.new(2025, 12, 1),
+  payment_month: Date.new(2025, 12, 1),
   status: :pending
 )
 
@@ -291,7 +291,7 @@ dual_lease_app_1 = RentalApplication.new(
   property: meadows,
   unit: meadows_unit_4,
   unit_monthly_price: meadows_unit_4_price,
-  move_in_date: Date.new(2024, 9, 1),
+  move_in_date: Date.new(2025, 9, 1),
   status: :approved,
   first_name: "Emily",
   last_name: "Rodriguez",
@@ -305,9 +305,9 @@ dual_lease_1 = Lease.create!(
   rental_application: dual_lease_app_1,
   property: meadows,
   unit: meadows_unit_4,
-  move_in_date: Date.new(2024, 9, 1),
+  move_in_date: Date.new(2025, 9, 1),
   signed: true,
-  signed_date: Date.new(2024, 8, 25)
+  signed_date: Date.new(2025, 8, 25)
 )
 
 LeaseTenant.create!(
@@ -321,7 +321,7 @@ dual_lease_app_2 = RentalApplication.new(
   property: cassidy,
   unit: cassidy_unit_1,
   unit_monthly_price: cassidy_unit_1_price,
-  move_in_date: Date.new(2024, 10, 15), # Overlaps with first lease
+  move_in_date: Date.new(2025, 10, 15), # Overlaps with first lease
   status: :approved,
   first_name: "Emily",
   last_name: "Rodriguez",
@@ -335,9 +335,9 @@ dual_lease_2 = Lease.create!(
   rental_application: dual_lease_app_2,
   property: cassidy,
   unit: cassidy_unit_1,
-  move_in_date: Date.new(2024, 10, 15),
+  move_in_date: Date.new(2025, 10, 15),
   signed: true,
-  signed_date: Date.new(2024, 10, 1)
+  signed_date: Date.new(2025, 10, 1)
 )
 
 LeaseTenant.create!(
@@ -364,9 +364,9 @@ Payment.create!(
   user: dual_lease_user,
   lease: dual_lease_1,
   amount: 1350.00,
-  due_date: Date.new(2024, 10, 1),
-  payment_month: Date.new(2024, 10, 1),
-  paid_date: Date.new(2024, 10, 5),
+  due_date: Date.new(2025, 10, 1),
+  payment_month: Date.new(2025, 10, 1),
+  paid_date: Date.new(2025, 10, 5),
   status: :paid
 )
 
@@ -374,9 +374,9 @@ Payment.create!(
   user: dual_lease_user,
   lease: dual_lease_1,
   amount: 1350.00,
-  due_date: Date.new(2024, 11, 1),
-  payment_month: Date.new(2024, 11, 1),
-  paid_date: Date.new(2024, 11, 3),
+  due_date: Date.new(2025, 11, 1),
+  payment_month: Date.new(2025, 11, 1),
+  paid_date: Date.new(2025, 11, 3),
   status: :paid
 )
 
@@ -385,8 +385,8 @@ Payment.create!(
   user: dual_lease_user,
   lease: dual_lease_1,
   amount: 1350.00,
-  due_date: Date.new(2024, 12, 1),
-  payment_month: Date.new(2024, 12, 1),
+  due_date: Date.new(2025, 12, 1),
+  payment_month: Date.new(2025, 12, 1),
   status: :pending
 )
 
@@ -396,9 +396,9 @@ Payment.create!(
   user: dual_lease_user,
   lease: dual_lease_2,
   amount: 1100.00,
-  due_date: Date.new(2024, 11, 1),
-  payment_month: Date.new(2024, 11, 1),
-  paid_date: Date.new(2024, 11, 8),
+  due_date: Date.new(2025, 11, 1),
+  payment_month: Date.new(2025, 11, 1),
+  paid_date: Date.new(2025, 11, 8),
   status: :paid
 )
 
@@ -407,8 +407,8 @@ Payment.create!(
   user: dual_lease_user,
   lease: dual_lease_2,
   amount: 1100.00,
-  due_date: Date.new(2024, 12, 1),
-  payment_month: Date.new(2024, 12, 1),
+  due_date: Date.new(2025, 12, 1),
+  payment_month: Date.new(2025, 12, 1),
   status: :pending
 )
 

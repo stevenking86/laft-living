@@ -25,10 +25,18 @@ module Backend
     config.api_only = true
     
     # Enable sessions for authentication
-    config.session_store :cookie_store, key: '_laft_session'
+    config.session_store :cookie_store, 
+      key: '_laft_session',
+      secure: Rails.env.production?, # Only send cookies over HTTPS in production
+      same_site: :lax, # Allow cookies in cross-origin requests
+      httponly: true # Prevent JavaScript access to cookies
     
     # Add session middleware for API authentication
     config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore, key: '_laft_session'
+    config.middleware.use ActionDispatch::Session::CookieStore, 
+      key: '_laft_session',
+      secure: Rails.env.production?,
+      same_site: :lax,
+      httponly: true
   end
 end

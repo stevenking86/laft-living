@@ -13621,3 +13621,128 @@ Processing by Api::V1::PaymentsController#outstanding as */*
 Completed 200 OK in 27ms (Views: 0.1ms | ActiveRecord: 4.0ms (31 queries, 10 cached) | GC: 5.3ms)
 
 
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+[dotenv] Set [36mOPENAI_API_KEY[0m, [36mSTRIPE_SECRET_KEY[0m, and [36mNEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY[0m
+[dotenv] Loaded [33m.env[0m
+DEPRECATION WARNING: `to_time` will always preserve the full timezone rather than offset of the receiver in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from <top (required)> at /Users/stevengerhardt-king/Code/laft/backend/config/environment.rb:5)
+Started GET "/api/v1/auth/me" for 127.0.0.1 at 2025-12-02 13:55:52 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::AuthController#me as */*
+  Parameters: {"auth" => {}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:44:in 'Api::V1::AuthController#authenticate_user'
+Completed 200 OK in 49ms (Views: 0.2ms | ActiveRecord: 17.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/rental_applications" for 127.0.0.1 at 2025-12-02 13:55:52 +0000
+Processing by Api::V1::RentalApplicationsController#index as */*
+  Parameters: {"rental_application" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mRentalApplication Load (2.8ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.6ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mUnit Load (1.0ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Load (1.4ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."rental_application_id" = $1[0m  [["rental_application_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+Completed 200 OK in 50ms (Views: 0.6ms | ActiveRecord: 19.9ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/rental_applications" for 127.0.0.1 at 2025-12-02 13:55:52 +0000
+Processing by Api::V1::RentalApplicationsController#index as */*
+  Parameters: {"rental_application" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."rental_application_id" = $1[0m  [["rental_application_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-12-02 13:55:55 +0000
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mUnit Load (1.4ms)[0m  [1m[34mSELECT DISTINCT "units".* FROM "units" LEFT OUTER JOIN "leases" ON "leases"."unit_id" = "units"."id" WHERE (leases.id IS NULL OR leases.move_out_date <= $1)[0m  [[nil, "2025-12-02"]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 7], [nil, "2025-12-02"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 7], [nil, "2025-12-02"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mUnitMonthlyPrice Load (0.8ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 7]]
+  ↳ app/controllers/api/v1/units_controller.rb:35:in 'Enumerable#map'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 6], [nil, "2025-12-02"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.3ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 6], [nil, "2025-12-02"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mUnitMonthlyPrice Load (0.2ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 6]]
+  ↳ app/controllers/api/v1/units_controller.rb:35:in 'Enumerable#map'
+Completed 200 OK in 25ms (Views: 0.1ms | ActiveRecord: 7.1ms (9 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/units" for 127.0.0.1 at 2025-12-02 13:55:55 +0000
+Processing by Api::V1::UnitsController#index as */*
+  Parameters: {"unit" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mUnit Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "units".* FROM "units" LEFT OUTER JOIN "leases" ON "leases"."unit_id" = "units"."id" WHERE (leases.id IS NULL OR leases.move_out_date <= $1)[0m  [[nil, "2025-12-02"]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.3ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/units_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 7], [nil, "2025-12-02"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 7], [nil, "2025-12-02"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mUnitMonthlyPrice Load (0.2ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 7]]
+  ↳ app/controllers/api/v1/units_controller.rb:35:in 'Enumerable#map'
+  [1m[36mLease Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) LIMIT $3[0m  [["unit_id", 6], [nil, "2025-12-02"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:13:in 'Unit#available?'
+  [1m[36mLease Load (0.1ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."unit_id" = $1 AND (move_out_date IS NULL OR move_out_date > $2) ORDER BY "leases"."id" ASC LIMIT $3[0m  [["unit_id", 6], [nil, "2025-12-02"], ["LIMIT", 1]]
+  ↳ app/models/unit.rb:18:in 'Unit#current_lease'
+  [1m[36mUnitMonthlyPrice Load (0.3ms)[0m  [1m[34mSELECT "unit_monthly_prices".* FROM "unit_monthly_prices" WHERE "unit_monthly_prices"."unit_id" = $1[0m  [["unit_id", 6]]
+  ↳ app/controllers/api/v1/units_controller.rb:35:in 'Enumerable#map'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 2.1ms (9 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/rental_applications" for 127.0.0.1 at 2025-12-02 13:55:57 +0000
+Processing by Api::V1::RentalApplicationsController#index as */*
+  Parameters: {"rental_application" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mRentalApplication Load (0.3ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mUnit Load (0.2ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."rental_application_id" = $1[0m  [["rental_application_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 1.2ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/rental_applications" for 127.0.0.1 at 2025-12-02 13:55:57 +0000
+Processing by Api::V1::RentalApplicationsController#index as */*
+  Parameters: {"rental_application" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in 'ApplicationController#authenticate_user'
+  [1m[36mRentalApplication Load (0.2ms)[0m  [1m[34mSELECT "rental_applications".* FROM "rental_applications" WHERE "rental_applications"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT "properties".* FROM "properties" WHERE "properties"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mUnit Load (0.1ms)[0m  [1m[34mSELECT "units".* FROM "units" WHERE "units"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+  [1m[36mLease Load (0.2ms)[0m  [1m[34mSELECT "leases".* FROM "leases" WHERE "leases"."rental_application_id" = $1[0m  [["rental_application_id", 2]]
+  ↳ app/controllers/api/v1/rental_applications_controller.rb:6:in 'Enumerable#map'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.8ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
